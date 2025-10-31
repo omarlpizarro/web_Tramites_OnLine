@@ -164,6 +164,7 @@ namespace Capsap.Domain.ValueObjects
         {
             return HashCode.Combine(Tipo, Numero);
         }
+
     }
 
 }
