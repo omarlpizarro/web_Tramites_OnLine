@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web_Tramites_OnLine", "web_Tramites_OnLine\web_Tramites_OnLine.csproj", "{ED12DB91-A4D6-4AB7-BC99-8B09FD660D56}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capsap.Domain", "Capsap.Domain\Capsap.Domain.csproj", "{7749E9D0-7E35-44A3-9307-186B7A5787AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{2F74A906-8E06-4961-A134-3B4D22D1DBD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7749E9D0-7E35-44A3-9307-186B7A5787AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7749E9D0-7E35-44A3-9307-186B7A5787AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7749E9D0-7E35-44A3-9307-186B7A5787AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F74A906-8E06-4961-A134-3B4D22D1DBD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F74A906-8E06-4961-A134-3B4D22D1DBD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F74A906-8E06-4961-A134-3B4D22D1DBD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F74A906-8E06-4961-A134-3B4D22D1DBD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

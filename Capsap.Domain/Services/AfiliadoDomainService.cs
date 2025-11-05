@@ -2,6 +2,7 @@
 using Capsap.Domain.Entities;
 using Capsap.Domain.Enums;
 using Capsap.Domain.ValueObjects;
+using Capsap.Domain.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
