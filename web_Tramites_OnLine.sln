@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capsap.Domain", "Capsap.Dom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{2F74A906-8E06-4961-A134-3B4D22D1DBD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{F9E8CD11-80CD-49F0-AE38-E9373B44B88F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2F74A906-8E06-4961-A134-3B4D22D1DBD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F74A906-8E06-4961-A134-3B4D22D1DBD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F74A906-8E06-4961-A134-3B4D22D1DBD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9E8CD11-80CD-49F0-AE38-E9373B44B88F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9E8CD11-80CD-49F0-AE38-E9373B44B88F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9E8CD11-80CD-49F0-AE38-E9373B44B88F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9E8CD11-80CD-49F0-AE38-E9373B44B88F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
