@@ -12,12 +12,15 @@ namespace Application.DTOs.Request
         public int AfiliadoSolicitanteId { get; set; }
         public int? AfiliadoConyuge2Id { get; set; }
         public TipoEventoNacimiento TipoEvento { get; set; }
-        public List<DatosHijoDto> Hijos { get; set; }
+        public List<DatosHijoDto> Hijos { get; set; } = new List<DatosHijoDto>();
 
         // Datos bancarios
         public string CBU { get; set; }
         public string TipoCuenta { get; set; }
         public string Banco { get; set; }
+
+        // ✅ AGREGADA: Observaciones
+        public string Observaciones { get; set; }
     }
 
 }

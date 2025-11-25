@@ -10,7 +10,7 @@ namespace Capsap.Domain.Entities
     // ==========================================
     // SUBSIDIO POR HIJO DISCAPACITADO
     // ==========================================
-    public class SubsidioHijoDiscapacitado : EntityBase
+    public partial class SubsidioHijoDiscapacitado : EntityBase
     {
         public int SolicitudSubsidioId { get; set; }
         public TipoSolicitudDiscapacidad TipoSolicitud { get; set; } // Primera vez o Anual

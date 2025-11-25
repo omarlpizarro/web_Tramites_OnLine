@@ -10,7 +10,7 @@ namespace Capsap.Domain.Entities
     // ==========================================
     // SOLICITUD DE SUBSIDIO (Entidad Principal)
     // ==========================================
-    public class SolicitudSubsidio : EntityBase
+    public partial class SolicitudSubsidio : EntityBase
     {
         public string NumeroSolicitud { get; set; } // Generado automáticamente
         public int AfiliadoSolicitanteId { get; set; }
@@ -42,5 +42,4 @@ namespace Capsap.Domain.Entities
         public virtual SubsidioNacimientoAdopcion SubsidioNacimientoAdopcion { get; set; }
         public virtual SubsidioHijoDiscapacitado SubsidioHijoDiscapacitado { get; set; }
     }
-
 }

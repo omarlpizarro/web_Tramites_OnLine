@@ -769,27 +769,6 @@ namespace Application.Services
         // ==========================================
         // MÉTODOS AUXILIARES DE MAPEO
         // ==========================================
-        private SolicitudResponseDto MapearASolicitudResponseDto(SolicitudSubsidio solicitud)
-        {
-            return new SolicitudResponseDto
-            {
-                Id = solicitud.Id,
-                NumeroSolicitud = solicitud.NumeroSolicitud,
-                FechaSolicitud = solicitud.FechaSolicitud,
-                Estado = solicitud.Estado,
-                EstadoDescripcion = solicitud.Estado.ObtenerDescripcion(),
-                TipoSubsidio = solicitud.TipoSubsidio,
-                TipoSubsidioDescripcion = solicitud.TipoSubsidio.ObtenerDescripcion(),
-                MatriculaAfiliado = solicitud.AfiliadoSolicitante.MatriculaProfesional,
-                NombreCompletoAfiliado = solicitud.AfiliadoSolicitante.NombreCompleto(),
-                FechaResolucion = solicitud.FechaResolucion,
-                DiasEnTramite = solicitud.DiasEnTramite(),
-                PuedeEditar = solicitud.PuedeSerEditada(),
-                PuedeEnviar = solicitud.PuedeSerEnviada(),
-                PuedeCancelar = solicitud.Estado == EstadoSolicitud.Borrador || solicitud.Estado == EstadoSolicitud.Enviada
-            };
-        }
-
         private DetalleSolicitudDto MapearADetalleSolicitudDto(SolicitudSubsidio solicitud)
         {
             var detalle = new DetalleSolicitudDto

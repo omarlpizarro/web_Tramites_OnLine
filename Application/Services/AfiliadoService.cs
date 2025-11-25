@@ -130,7 +130,7 @@ namespace Application.Services
             }
         }
 
-        public async Task<r> ActualizarDatosContactoAsync(int afiliadoId, string email, string telefono, string domicilio)
+        public async Task<Result> ActualizarDatosContactoAsync(int afiliadoId, string email, string telefono, string domicilio)
         {
             try
             {

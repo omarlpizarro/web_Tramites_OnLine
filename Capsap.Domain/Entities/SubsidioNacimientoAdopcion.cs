@@ -10,7 +10,7 @@ namespace Capsap.Domain.Entities
     // ==========================================
     // SUBSIDIO POR NACIMIENTO/ADOPCIÓN
     // ==========================================
-    public class SubsidioNacimientoAdopcion : EntityBase
+    public partial class SubsidioNacimientoAdopcion : EntityBase
     {
         public int SolicitudSubsidioId { get; set; }
         public TipoEventoNacimiento TipoEvento { get; set; }

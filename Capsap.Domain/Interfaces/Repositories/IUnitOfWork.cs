@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Capsap.Domain.Interfaces.Repositories
 {
-    interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         IAfiliadoRepository Afiliados { get; }
         ISolicitudSubsidioRepository Solicitudes { get; }

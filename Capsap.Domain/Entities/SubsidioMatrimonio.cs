@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capsap.Domain.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace Capsap.Domain.Entities
     // ==========================================
     // SUBSIDIO POR MATRIMONIO
     // ==========================================
-    public class SubsidioMatrimonio : EntityBase
+    public partial class SubsidioMatrimonio : EntityBase
     {
         public int SolicitudSubsidioId { get; set; }
         public DateTime FechaCelebracion { get; set; }

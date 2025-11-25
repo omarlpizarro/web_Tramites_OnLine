@@ -1,4 +1,5 @@
 ﻿using Capsap.Domain.Enums;
+using Capsap.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Capsap.Domain.Entities
     // ==========================================
     // SUBSIDIO POR MATERNIDAD
     // ==========================================
-    public class SubsidioMaternidad : EntityBase
+    public partial class SubsidioMaternidad : EntityBase
     {
         public int SolicitudSubsidioId { get; set; }
         public TipoEventoMaternidad TipoEvento { get; set; } // Nacimiento o Adopción

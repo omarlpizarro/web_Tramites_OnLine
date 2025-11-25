@@ -34,7 +34,7 @@ namespace Application.Services
             _solicitudRepository = solicitudRepository;
         }
 
-        public async Task<r> VerificarDeudaAsync(int afiliadoId)
+        public async Task<Result> VerificarDeudaAsync(int afiliadoId)
         {
             var afiliado = await _afiliadoRepository.GetByIdAsync(afiliadoId);
             if (afiliado == null)
@@ -53,12 +53,12 @@ namespace Application.Services
             return Result.Success();
         }
 
-        public async Task<r> ValidarPlazoSolicitudAsync(TipoSubsidio tipoSubsidio, DateTime fechaEvento)
+        public async Task<Result> ValidarPlazoSolicitudAsync(TipoSubsidio tipoSubsidio, DateTime fechaEvento)
         {
             return _validacionPlazos.ValidarPlazoSolicitud(tipoSubsidio, fechaEvento);
         }
 
-        public async Task<r> ValidarDocumentosRequeridosAsync(int solicitudId)
+        public async Task<Result> ValidarDocumentosRequeridosAsync(int solicitudId)
         {
             var solicitud = await _solicitudRepository.GetByIdWithDetailsAsync(solicitudId);
             if (solicitud == null)
@@ -67,7 +67,7 @@ namespace Application.Services
             return _validacionDocumentacion.ValidarDocumentacionCompleta(solicitud);
         }
 
-        public Task<r> ValidarCBUAsync(string cbu)
+        public Task<Result> ValidarCBUAsync(string cbu)
         {
             if (!DomainValidators.EsCBUValido(cbu))
                 return Task.FromResult(Result.Failure(DomainConstants.ErrorMessages.CBU_INVALIDO));
@@ -75,7 +75,7 @@ namespace Application.Services
             return Task.FromResult(Result.Success());
         }
 
-        public Task<r> ValidarDNIAsync(string dni)
+        public Task<Result> ValidarDNIAsync(string dni)
         {
             if (!DomainValidators.EsDNIValido(dni))
                 return Task.FromResult(Result.Failure(DomainConstants.ErrorMessages.DNI_INVALIDO));
@@ -83,12 +83,27 @@ namespace Application.Services
             return Task.FromResult(Result.Success());
         }
 
-        public Task<r> ValidarCUILAsync(string cuil)
+        public Task<Result> ValidarCUILAsync(string cuil)
         {
             if (!DomainValidators.EsCUILValido(cuil))
                 return Task.FromResult(Result.Failure(DomainConstants.ErrorMessages.CUIL_INVALIDO));
 
             return Task.FromResult(Result.Success());
+        }
+
+        Task<Result> IValidacionService.VerificarDeudaAsync(int afiliadoId)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Result> IValidacionService.ValidarPlazoSolicitudAsync(TipoSubsidio tipoSubsidio, DateTime fechaEvento)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Result> IValidacionService.ValidarDocumentosRequeridosAsync(int solicitudId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

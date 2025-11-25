@@ -7,6 +7,7 @@ using Capsap.Domain.Extensions;
 using Capsap.Domain.Interfaces.Repositories;
 using Capsap.Domain.Interfaces.Services;
 using Capsap.Domain.ValueObjects;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -156,7 +157,7 @@ namespace Application.Services
             }
         }
 
-        public async Task<r> CertificarDocumentoAsync(int documentoId, int usuarioId)
+        public async Task<Result> CertificarDocumentoAsync(int documentoId, int usuarioId)
         {
             try
             {
@@ -188,7 +189,7 @@ namespace Application.Services
             }
         }
 
-        public async Task<r> EliminarDocumentoAsync(int documentoId, int usuarioId)
+        public async Task<Result> EliminarDocumentoAsync(int documentoId, int usuarioId)
         {
             try
             {
@@ -265,5 +266,6 @@ namespace Application.Services
                     : null
             };
         }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Application.DTOs.Response;
+using Application.Interfaces;
 using Capsap.Domain.Enums;
 using Capsap.Domain.Extensions;
 using Capsap.Domain.Interfaces.Repositories;
