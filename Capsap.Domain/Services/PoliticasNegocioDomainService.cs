@@ -1,4 +1,4 @@
-ï»¿using Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using Capsap.Domain.Enums;
 using Capsap.Domain.Extensions;
 using Capsap.Domain.ValueObjects;
@@ -30,7 +30,7 @@ namespace Capsap.Domain.Services
                 );
             }
 
-            // Verificar lÃ­mite anual segÃºn tipo
+            // Verificar límite anual según tipo
             var limiteAnual = ObtenerLimiteSolicitudesAnuales(tipo);
             if (limiteAnual > 0)
             {
@@ -43,7 +43,7 @@ namespace Capsap.Domain.Services
                 if (solicitudesEsteAnio >= limiteAnual)
                 {
                     return Result.Failure(
-                        $"Ha alcanzado el lÃ­mite de {limiteAnual} solicitud(es) de tipo {tipo.ObtenerDescripcion()} por aÃ±o."
+                        $"Ha alcanzado el límite de {limiteAnual} solicitud(es) de tipo {tipo.ObtenerDescripcion()} por año."
                     );
                 }
             }
@@ -66,13 +66,13 @@ namespace Capsap.Domain.Services
                 if (ultimaSolicitud != null)
                 {
                     var diasDesdeUltimaSolicitud = (DateTime.Now - ultimaSolicitud.FechaSolicitud).Days;
-                    var diasRequeridos = 365; // 1 aÃ±o
+                    var diasRequeridos = 365; // 1 año
 
                     if (diasDesdeUltimaSolicitud < diasRequeridos)
                     {
                         var diasFaltantes = diasRequeridos - diasDesdeUltimaSolicitud;
                         return Result.Failure(
-                            $"Debe esperar {diasFaltantes} dÃ­as mÃ¡s para solicitar nuevamente el subsidio por hijo discapacitado. " +
+                            $"Debe esperar {diasFaltantes} días más para solicitar nuevamente el subsidio por hijo discapacitado. " +
                             "Este subsidio se otorga con una frecuencia anual."
                         );
                     }
@@ -87,9 +87,9 @@ namespace Capsap.Domain.Services
             return tipo switch
             {
                 TipoSubsidio.Matrimonio => 1, // Solo una vez
-                TipoSubsidio.Maternidad => 0, // Sin lÃ­mite (puede tener varios hijos)
-                TipoSubsidio.NacimientoAdopcion => 0, // Sin lÃ­mite
-                TipoSubsidio.HijoDiscapacitado => 1, // Una vez por aÃ±o por hijo
+                TipoSubsidio.Maternidad => 0, // Sin límite (puede tener varios hijos)
+                TipoSubsidio.NacimientoAdopcion => 0, // Sin límite
+                TipoSubsidio.HijoDiscapacitado => 1, // Una vez por año por hijo
                 _ => 0
             };
         }

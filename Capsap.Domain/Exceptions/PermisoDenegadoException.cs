@@ -1,4 +1,4 @@
-ï»¿using Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Exceptions
 {
     /// <summary>
-    /// ExcepciÃ³n lanzada cuando un usuario no tiene permisos
+    /// Excepción lanzada cuando un usuario no tiene permisos
     /// </summary>
     public class PermisoDenegadoException : DomainException
     {
@@ -18,7 +18,7 @@ namespace Capsap.Domain.Exceptions
 
         public PermisoDenegadoException(int usuarioId, string accion)
             : base(
-                $"El usuario {usuarioId} no tiene permisos para realizar la acciÃ³n: {accion}",
+                $"El usuario {usuarioId} no tiene permisos para realizar la acción: {accion}",
                 "PERMISO_DENEGADO")
         {
             UsuarioId = usuarioId;
@@ -29,7 +29,7 @@ namespace Capsap.Domain.Exceptions
 
         public PermisoDenegadoException(int usuarioId, RolUsuario rol, string accion)
             : base(
-                $"El usuario {usuarioId} con rol '{rol}' no tiene permisos para realizar la acciÃ³n: {accion}",
+                $"El usuario {usuarioId} con rol '{rol}' no tiene permisos para realizar la acción: {accion}",
                 "PERMISO_DENEGADO")
         {
             UsuarioId = usuarioId;

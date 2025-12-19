@@ -1,4 +1,4 @@
-Ôªøusing Application.DTOs.Response;
+using Application.DTOs.Response;
 using Application.Interfaces;
 using Capsap.Domain.Enums;
 using Capsap.Domain.Extensions;
@@ -28,10 +28,10 @@ namespace Application.Services
                 var estadisticas = new EstadisticasGeneralesDto
                 {
                     TotalSolicitudesMes = await _solicitudRepository.ContarSolicitudesDelMesAsync(),
-                    SolicitudesPendientes = await _solicitudRepository.ContarSolicitudesPorEstadoAsync(EstadoSolicitud.Enviada) +
-                                           await _solicitudRepository.ContarSolicitudesPorEstadoAsync(EstadoSolicitud.EnRevision),
-                    SolicitudesAprobadas = await _solicitudRepository.ContarSolicitudesPorEstadoAsync(EstadoSolicitud.Aprobada),
-                    SolicitudesRechazadas = await _solicitudRepository.ContarSolicitudesPorEstadoAsync(EstadoSolicitud.Rechazada),
+                    SolicitudesPendientes = await _solicitudRepository.ContarPorEstadoAsync(EstadoSolicitud.Enviada) +
+                                           await _solicitudRepository.ContarPorEstadoAsync(EstadoSolicitud.EnRevision),
+                    SolicitudesAprobadas = await _solicitudRepository.ContarPorEstadoAsync(EstadoSolicitud.Aprobada),
+                    SolicitudesRechazadas = await _solicitudRepository.ContarPorEstadoAsync(EstadoSolicitud.Rechazada),
                     TiempoPromedioResolucionDias = await _solicitudRepository.ObtenerTiempoPromedioResolucionAsync()
                 };
 
@@ -39,7 +39,7 @@ namespace Application.Services
                 estadisticas.SolicitudesPorTipo = new Dictionary<string, int>();
                 foreach (TipoSubsidio tipo in Enum.GetValues(typeof(TipoSubsidio)))
                 {
-                    var cantidad = await _solicitudRepository.ContarSolicitudesPorTipoAsync(tipo);
+                    var cantidad = await _solicitudRepository.ContarPorTipoAsync(tipo);
                     estadisticas.SolicitudesPorTipo[tipo.ObtenerDescripcion()] = cantidad;
                 }
 
@@ -47,12 +47,12 @@ namespace Application.Services
                 estadisticas.SolicitudesPorEstado = new Dictionary<string, int>();
                 foreach (EstadoSolicitud estado in Enum.GetValues(typeof(EstadoSolicitud)))
                 {
-                    var cantidad = await _solicitudRepository.ContarSolicitudesPorEstadoAsync(estado);
+                    var cantidad = await _solicitudRepository.ContarPorEstadoAsync(estado);
                     estadisticas.SolicitudesPorEstado[estado.ObtenerDescripcion()] = cantidad;
                 }
 
-                // √öltimas 10 solicitudes
-                var ultimasSolicitudes = await _solicitudRepository.GetAllAsync();
+                // ⁄ltimas 10 solicitudes
+                var ultimasSolicitudes = await _solicitudRepository.ObtenerTodasAsync();
                 estadisticas.UltimasSolicitudes = ultimasSolicitudes
                     .OrderByDescending(s => s.FechaSolicitud)
                     .Take(10)
@@ -75,7 +75,7 @@ namespace Application.Services
             }
             catch (Exception ex)
             {
-                return Result<EstadisticasGeneralesDto>.Failure($"Error al obtener estad√≠sticas: {ex.Message}");
+                return Result<EstadisticasGeneralesDto>.Failure($"Error al obtener estadÌsticas: {ex.Message}");
             }
         }
 
@@ -88,12 +88,14 @@ namespace Application.Services
             {
                 var solicitudes = await _solicitudRepository.GetPorRangoFechasAsync(fechaDesde, fechaHasta);
 
+                // Convertir 'solicitudes' a una lista explÌcitamente para evitar el error CS0266
+                //solicitudes = solicitudes.Where(s => s.TipoSubsidio == tipo.Value).ToList();
                 if (tipo.HasValue)
                 {
-                    solicitudes = solicitudes.Where(s => s.TipoSubsidio == tipo.Value);
+                    solicitudes = solicitudes.Where(s => s.TipoSubsidio == tipo.Value).ToList();
                 }
 
-                // Aqu√≠ implementar√≠as la generaci√≥n del reporte en Excel o PDF
+                // AquÌ implementarÌas la generaciÛn del reporte en Excel o PDF
                 // Por ahora retornamos un placeholder
                 var contenido = System.Text.Encoding.UTF8.GetBytes("Reporte de solicitudes");
 
@@ -109,7 +111,7 @@ namespace Application.Services
         {
             try
             {
-                // Implementar generaci√≥n de reporte de afiliados
+                // Implementar generaciÛn de reporte de afiliados
                 var contenido = System.Text.Encoding.UTF8.GetBytes("Reporte de afiliados");
                 return Result<byte[]>.Success(contenido);
             }
@@ -153,7 +155,7 @@ namespace Application.Services
 
                 foreach (TipoSubsidio tipo in Enum.GetValues(typeof(TipoSubsidio)))
                 {
-                    var cantidad = await _solicitudRepository.ContarSolicitudesPorTipoAsync(tipo);
+                    var cantidad = await _solicitudRepository.ContarPorTipoAsync(tipo);
                     resultado[tipo] = cantidad;
                 }
 
@@ -173,7 +175,7 @@ namespace Application.Services
 
                 foreach (EstadoSolicitud estado in Enum.GetValues(typeof(EstadoSolicitud)))
                 {
-                    var cantidad = await _solicitudRepository.ContarSolicitudesPorEstadoAsync(estado);
+                    var cantidad = await _solicitudRepository.ContarPorEstadoAsync(estado);
                     resultado[estado] = cantidad;
                 }
 

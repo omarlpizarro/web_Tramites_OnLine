@@ -1,4 +1,4 @@
-ï»¿using Application.DTOs.Response;
+using Application.DTOs.Response;
 using Application.Interfaces;
 using Capsap.Domain.Constants;
 using Capsap.Domain.Entities;
@@ -50,26 +50,26 @@ namespace Application.Services
                 if (archivo == null || archivo.Length == 0)
                     return Result<DocumentoDto>.Failure("El archivo es requerido");
 
-                // Validar tamaÃ±o
+                // Validar tamaño
                 if (archivo.Length > DomainConstants.TAMANO_MAXIMO_ARCHIVO_BYTES)
                 {
                     var tamanoMB = DomainConstants.TAMANO_MAXIMO_ARCHIVO_BYTES / 1024 / 1024;
-                    return Result<DocumentoDto>.Failure($"El archivo excede el tamaÃ±o mÃ¡ximo de {tamanoMB} MB");
+                    return Result<DocumentoDto>.Failure($"El archivo excede el tamaño máximo de {tamanoMB} MB");
                 }
 
-                // Validar extensiÃ³n
+                // Validar extensión
                 var extension = Path.GetExtension(archivo.FileName).ToLowerInvariant();
                 if (!DomainConstants.EXTENSIONES_PERMITIDAS.Contains(extension))
                 {
                     return Result<DocumentoDto>.Failure(
-                        $"ExtensiÃ³n no permitida. Solo se aceptan: {string.Join(", ", DomainConstants.EXTENSIONES_PERMITIDAS)}"
+                        $"Extensión no permitida. Solo se aceptan: {string.Join(", ", DomainConstants.EXTENSIONES_PERMITIDAS)}"
                     );
                 }
 
                 await _unitOfWork.BeginTransactionAsync();
 
                 // Verificar que la solicitud existe
-                var solicitud = await _solicitudRepository.GetByIdAsync(solicitudId);
+                var solicitud = await _solicitudRepository.ObtenerPorIdAsync(solicitudId);
                 if (solicitud == null)
                     return Result<DocumentoDto>.Failure("Solicitud no encontrada");
 
@@ -106,7 +106,7 @@ namespace Application.Services
                     Activo = true
                 };
 
-                await _documentoRepository.AddAsync(documento);
+                await _documentoRepository.AgregarAsync(documento);
                 await _unitOfWork.SaveChangesAsync();
                 await _unitOfWork.CommitTransactionAsync();
 
@@ -124,7 +124,7 @@ namespace Application.Services
         {
             try
             {
-                var documento = await _documentoRepository.GetByIdWithSolicitudAsync(documentoId);
+                var documento = await _documentoRepository.ObtenerPorIdAsync(documentoId);
                 if (documento == null)
                     return Result<ArchivoDto>.Failure("Documento no encontrado");
 
@@ -159,34 +159,45 @@ namespace Application.Services
 
         public async Task<Result> CertificarDocumentoAsync(int documentoId, int usuarioId)
         {
-            try
+            // Obtener el documento
+            var documento = await _documentoRepository.ObtenerPorIdAsync(documentoId);
+            if (documento == null)
+                return Result.Failure("Documento no encontrado");
+
+            // Verificar que no esté ya certificado
+            if (documento.Certificado)
+                return Result.Failure("El documento ya está certificado");
+
+            // Verificar permisos del usuario
+            var usuario = await _usuarioRepository.GetByIdAsync(usuarioId);
+            if (usuario == null)
+                return Result.Failure("Usuario no encontrado");
+
+            // Solo empleados y administradores pueden certificar
+            if (usuario.Rol != RolUsuario.EmpleadoRevisor && usuario.Rol != RolUsuario.Administrador)
+                return Result.Failure("No tiene permisos para certificar documentos");
+
+            // Certificar el documento
+            documento.Certificado = true;
+            documento.CertificadoPorUsuarioId = usuarioId;
+            documento.FechaCertificacion = DateTime.UtcNow;
+
+            // Guardar cambios
+            await _documentoRepository.ActualizarAsync(documento);
+
+            // Opcional: Agregar al historial de la solicitud
+            var historial = new HistorialSolicitud
             {
-                await _unitOfWork.BeginTransactionAsync();
+                SolicitudSubsidioId = documento.SolicitudSubsidioId,
+                EstadoNuevo = documento.Solicitud.Estado, // Mantener el estado actual
+                Comentario = $"Documento '{documento.TipoDocumento}' certificado por {usuario.Nombre}",
+                UsuarioId = usuarioId,
+                FechaCambio = DateTime.UtcNow
+            };
 
-                var documento = await _documentoRepository.GetByIdAsync(documentoId);
-                if (documento == null)
-                    return Result.Failure("Documento no encontrado");
+            await _solicitudRepository.AgregarHistorialAsync(historial);
 
-                // Verificar permisos - solo empleados pueden certificar
-                var usuario = await _usuarioRepository.GetByIdAsync(usuarioId);
-                if (usuario == null)
-                    return Result.Failure("Usuario no encontrado");
-
-                if (usuario.Rol == RolUsuario.Afiliado)
-                    return Result.Failure("No tiene permisos para certificar documentos");
-
-                // Certificar documento
-                await _documentoRepository.CertificarDocumentoAsync(documentoId, usuarioId);
-                await _unitOfWork.SaveChangesAsync();
-                await _unitOfWork.CommitTransactionAsync();
-
-                return Result.Success();
-            }
-            catch (Exception ex)
-            {
-                await _unitOfWork.RollbackTransactionAsync();
-                return Result.Failure($"Error al certificar documento: {ex.Message}");
-            }
+            return Result.Success();
         }
 
         public async Task<Result> EliminarDocumentoAsync(int documentoId, int usuarioId)
@@ -195,7 +206,7 @@ namespace Application.Services
             {
                 await _unitOfWork.BeginTransactionAsync();
 
-                var documento = await _documentoRepository.GetByIdWithSolicitudAsync(documentoId);
+                var documento = await _documentoRepository.ObtenerPorIdAsync(documentoId);
                 if (documento == null)
                     return Result.Failure("Documento no encontrado");
 
@@ -208,7 +219,7 @@ namespace Application.Services
                 if (usuario.Rol == RolUsuario.Afiliado && solicitud.AfiliadoSolicitanteId != usuario.AfiliadoId)
                     return Result.Failure("No tiene permisos para eliminar este documento");
 
-                // Solo se puede eliminar si la solicitud estÃ¡ en borrador
+                // Solo se puede eliminar si la solicitud está en borrador
                 if (solicitud.Estado != EstadoSolicitud.Borrador)
                     return Result.Failure("No se puede eliminar documentos de una solicitud enviada");
 
@@ -216,7 +227,7 @@ namespace Application.Services
                 documento.Activo = false;
                 documento.FechaModificacion = DateTime.Now;
 
-                await _documentoRepository.UpdateAsync(documento);
+                await _documentoRepository.ActualizarAsync(documento);
                 await _unitOfWork.SaveChangesAsync();
                 await _unitOfWork.CommitTransactionAsync();
 
@@ -233,7 +244,7 @@ namespace Application.Services
         {
             try
             {
-                var documentos = await _documentoRepository.GetBySolicitudIdAsync(solicitudId);
+                var documentos = await _documentoRepository.ObtenerPorSolicitudAsync(solicitudId);
                 var dtos = documentos
                     .Where(d => d.Activo)
                     .Select(d => MapearADocumentoDto(d))

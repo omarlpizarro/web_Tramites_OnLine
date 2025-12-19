@@ -1,4 +1,4 @@
-锘縰sing Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using Capsap.Domain.Enums;
 using Capsap.Domain.Extensions;
 using System;
@@ -27,7 +27,7 @@ namespace Capsap.Domain.Services
                     break;
 
                 case TipoNotificacionNegocio.NuevaSolicitudParaRevisar:
-                    // Notificar a empleados (esto deber铆a obtenerse de configuraci贸n o BD)
+                    // Notificar a empleados (esto deber韆 obtenerse de configuraci髇 o BD)
                     // Por ahora es solo un placeholder
                     break;
             }
@@ -43,7 +43,7 @@ namespace Capsap.Domain.Services
                     $"Solicitud {solicitud.NumeroSolicitud} - Creada exitosamente",
 
                 TipoNotificacionNegocio.SolicitudEnviada =>
-                    $"Solicitud {solicitud.NumeroSolicitud} - Enviada para revisi贸n",
+                    $"Solicitud {solicitud.NumeroSolicitud} - Enviada para revisi髇",
 
                 TipoNotificacionNegocio.SolicitudAprobada =>
                     $"Solicitud {solicitud.NumeroSolicitud} - APROBADA",
@@ -52,12 +52,12 @@ namespace Capsap.Domain.Services
                     $"Solicitud {solicitud.NumeroSolicitud} - Rechazada",
 
                 TipoNotificacionNegocio.DocumentacionIncompleta =>
-                    $"Solicitud {solicitud.NumeroSolicitud} - Documentaci贸n incompleta",
+                    $"Solicitud {solicitud.NumeroSolicitud} - Documentaci髇 incompleta",
 
                 TipoNotificacionNegocio.NuevaSolicitudParaRevisar =>
-                    $"Nueva solicitud pendiente de revisi贸n - {solicitud.NumeroSolicitud}",
+                    $"Nueva solicitud pendiente de revisi髇 - {solicitud.NumeroSolicitud}",
 
-                _ => $"Notificaci贸n - Solicitud {solicitud.NumeroSolicitud}"
+                _ => $"Notificaci髇 - Solicitud {solicitud.NumeroSolicitud}"
             };
         }
 

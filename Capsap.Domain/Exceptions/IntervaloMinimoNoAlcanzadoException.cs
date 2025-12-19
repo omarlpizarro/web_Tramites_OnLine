@@ -1,4 +1,4 @@
-Ôªøusing Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Exceptions
 {
     /// <summary>
-    /// Excepci√≥n lanzada cuando no se cumple el intervalo m√≠nimo entre solicitudes
+    /// ExcepciÛn lanzada cuando no se cumple el intervalo mÌnimo entre solicitudes
     /// </summary>
     public class IntervaloMinimoNoAlcanzadoException : DomainException
     {
@@ -18,7 +18,7 @@ namespace Capsap.Domain.Exceptions
 
         public IntervaloMinimoNoAlcanzadoException(int afiliadoId, TipoSubsidio tipoSubsidio, int diasFaltantes)
             : base(
-                $"Debe esperar {diasFaltantes} d√≠as m√°s para solicitar nuevamente el subsidio de tipo {tipoSubsidio}.",
+                $"Debe esperar {diasFaltantes} dÌas m·s para solicitar nuevamente el subsidio de tipo {tipoSubsidio}.",
                 "INTERVALO_MINIMO_NO_ALCANZADO")
         {
             AfiliadoId = afiliadoId;

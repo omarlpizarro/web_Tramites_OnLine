@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Application.DTOs.Request
 {
     // ==========================================
-    // DTOs DE REQUEST - BÚSQUEDA
+    // DTOs DE REQUEST - B�SQUEDA
     // ==========================================
 
     public class BuscarSolicitudesDto

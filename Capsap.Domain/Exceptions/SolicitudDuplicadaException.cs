@@ -1,4 +1,4 @@
-ï»¿using Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Exceptions
 {
     /// <summary>
-    /// ExcepciÃ³n lanzada cuando ya existe una solicitud activa del mismo tipo
+    /// Excepción lanzada cuando ya existe una solicitud activa del mismo tipo
     /// </summary>
     public class SolicitudDuplicadaException : DomainException
     {
@@ -18,7 +18,7 @@ namespace Capsap.Domain.Exceptions
 
         public SolicitudDuplicadaException(int afiliadoId, TipoSubsidio tipoSubsidio, string numeroSolicitudExistente)
             : base(
-                $"Ya existe una solicitud activa de tipo {tipoSubsidio} (NÃºmero: {numeroSolicitudExistente}). Debe esperar a que se resuelva antes de crear una nueva.",
+                $"Ya existe una solicitud activa de tipo {tipoSubsidio} (Número: {numeroSolicitudExistente}). Debe esperar a que se resuelva antes de crear una nueva.",
                 "SOLICITUD_DUPLICADA")
         {
             AfiliadoId = afiliadoId;

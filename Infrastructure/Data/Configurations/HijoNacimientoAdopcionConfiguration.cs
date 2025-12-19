@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Infrastructure.Data.Configurations
 {
     // ==========================================
-    // HIJO NACIMIENTO/ADOPCIÓN CONFIGURATION
+    // HIJO NACIMIENTO/ADOPCI�N CONFIGURATION
     // ==========================================
     public class HijoNacimientoAdopcionConfiguration : IEntityTypeConfiguration<HijoNacimientoAdopcion>
     {

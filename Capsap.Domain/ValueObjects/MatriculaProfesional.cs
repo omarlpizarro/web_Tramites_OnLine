@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,13 +19,13 @@ namespace Capsap.Domain.ValueObjects
         {
             if (string.IsNullOrWhiteSpace(numero))
             {
-                return Result<MatriculaProfesional>.Failure("El nÃºmero de matrÃ­cula es requerido");
+                return Result<MatriculaProfesional>.Failure("El número de matrícula es requerido");
             }
 
-            // Validar formato (ajustar segÃºn necesidad)
+            // Validar formato (ajustar según necesidad)
             if (numero.Length < 3 || numero.Length > 20)
             {
-                return Result<MatriculaProfesional>.Failure("El nÃºmero de matrÃ­cula tiene un formato invÃ¡lido");
+                return Result<MatriculaProfesional>.Failure("El número de matrícula tiene un formato inválido");
             }
 
             return Result<MatriculaProfesional>.Success(new MatriculaProfesional(numero.Trim().ToUpper()));

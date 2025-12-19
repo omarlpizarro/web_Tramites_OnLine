@@ -1,4 +1,4 @@
-ï»¿using Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -36,13 +36,13 @@ namespace Infrastructure.Data.Configurations
                 .IsRequired()
                 .HasMaxLength(100);
 
-            // RelaciÃ³n con Afiliado (opcional)
+            // Relación con Afiliado (opcional)
             builder.HasOne(u => u.Afiliado)
                 .WithOne(a => a.Usuario)
                 .HasForeignKey<Usuario>(u => u.AfiliadoId)
                 .IsRequired(false);
 
-            // Ãndices
+            // Índices
             builder.HasIndex(u => u.Email).IsUnique();
             builder.HasIndex(u => u.Rol);
         }

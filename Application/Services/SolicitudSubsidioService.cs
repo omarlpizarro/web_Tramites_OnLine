@@ -64,7 +64,7 @@ namespace Application.Services
                 await _unitOfWork.BeginTransactionAsync();
 
                 // 1. Obtener afiliado
-                var afiliado = await _afiliadoRepository.GetByIdAsync(dto.AfiliadoSolicitanteId);
+                var afiliado = await _afiliadoRepository.ObtenerPorIdAsync(dto.AfiliadoSolicitanteId);
                 if (afiliado == null)
                     return Result<SolicitudResponseDto>.Failure("Afiliado no encontrado");
 
@@ -127,7 +127,7 @@ namespace Application.Services
                 solicitud.NumeroSolicitud = _generadorNumero.GenerarNumeroSolicitud(TipoSubsidio.Matrimonio, correlativo);
 
                 // 8. Guardar en base de datos
-                await _solicitudRepository.AddAsync(solicitud);
+                await _solicitudRepository.AgregarAsync(solicitud);
                 await _unitOfWork.SaveChangesAsync();
                 await _unitOfWork.CommitTransactionAsync();
 
@@ -155,7 +155,7 @@ namespace Application.Services
             {
                 await _unitOfWork.BeginTransactionAsync();
 
-                var afiliado = await _afiliadoRepository.GetByIdAsync(dto.AfiliadoSolicitanteId);
+                var afiliado = await _afiliadoRepository.ObtenerPorIdAsync(dto.AfiliadoSolicitanteId);
                 if (afiliado == null)
                     return Result<SolicitudResponseDto>.Failure("Afiliado no encontrado");
 
@@ -207,7 +207,7 @@ namespace Application.Services
                 var correlativo = await _solicitudRepository.ObtenerSiguienteCorrelativoAsync(periodo, prefijo);
                 solicitud.NumeroSolicitud = _generadorNumero.GenerarNumeroSolicitud(TipoSubsidio.Maternidad, correlativo);
 
-                await _solicitudRepository.AddAsync(solicitud);
+                await _solicitudRepository.AgregarAsync(solicitud);
                 await _unitOfWork.SaveChangesAsync();
                 await _unitOfWork.CommitTransactionAsync();
 
@@ -232,7 +232,7 @@ namespace Application.Services
             {
                 await _unitOfWork.BeginTransactionAsync();
 
-                var afiliado = await _afiliadoRepository.GetByIdAsync(dto.AfiliadoSolicitanteId);
+                var afiliado = await _afiliadoRepository.ObtenerPorIdAsync(dto.AfiliadoSolicitanteId);
                 if (afiliado == null)
                     return Result<SolicitudResponseDto>.Failure("Afiliado no encontrado");
 
@@ -297,7 +297,7 @@ namespace Application.Services
                 var correlativo = await _solicitudRepository.ObtenerSiguienteCorrelativoAsync(periodo, prefijo);
                 solicitud.NumeroSolicitud = _generadorNumero.GenerarNumeroSolicitud(TipoSubsidio.NacimientoAdopcion, correlativo);
 
-                await _solicitudRepository.AddAsync(solicitud);
+                await _solicitudRepository.AgregarAsync(solicitud);
                 await _unitOfWork.SaveChangesAsync();
                 await _unitOfWork.CommitTransactionAsync();
 
@@ -322,7 +322,7 @@ namespace Application.Services
             {
                 await _unitOfWork.BeginTransactionAsync();
 
-                var afiliado = await _afiliadoRepository.GetByIdAsync(dto.AfiliadoSolicitanteId);
+                var afiliado = await _afiliadoRepository.ObtenerPorIdAsync(dto.AfiliadoSolicitanteId);
                 if (afiliado == null)
                     return Result<SolicitudResponseDto>.Failure("Afiliado no encontrado");
 
@@ -371,7 +371,7 @@ namespace Application.Services
                 var correlativo = await _solicitudRepository.ObtenerSiguienteCorrelativoAsync(periodo, prefijo);
                 solicitud.NumeroSolicitud = _generadorNumero.GenerarNumeroSolicitud(TipoSubsidio.HijoDiscapacitado, correlativo);
 
-                await _solicitudRepository.AddAsync(solicitud);
+                await _solicitudRepository.AgregarAsync(solicitud);
                 await _unitOfWork.SaveChangesAsync();
                 await _unitOfWork.CommitTransactionAsync();
 
@@ -420,7 +420,7 @@ namespace Application.Services
             {
                 await _unitOfWork.BeginTransactionAsync();
 
-                var solicitud = await _solicitudRepository.GetByIdWithDetailsAsync(solicitudId);
+                var solicitud = await _solicitudRepository.ObtenerPorIdAsync(solicitudId);
                 if (solicitud == null)
                     return Result.Failure("Solicitud no encontrada");
 
@@ -442,7 +442,7 @@ namespace Application.Services
                 if (!result.IsSuccess)
                     return result;
 
-                await _solicitudRepository.UpdateAsync(solicitud);
+                await _solicitudRepository.ActualizarAsync(solicitud);
                 await _unitOfWork.SaveChangesAsync();
                 await _unitOfWork.CommitTransactionAsync();
 
@@ -468,7 +468,7 @@ namespace Application.Services
             {
                 await _unitOfWork.BeginTransactionAsync();
 
-                var solicitud = await _solicitudRepository.GetByIdWithDetailsAsync(solicitudId);
+                var solicitud = await _solicitudRepository.ObtenerPorIdAsync(solicitudId);
                 if (solicitud == null)
                     return Result.Failure("Solicitud no encontrada");
 
@@ -494,7 +494,7 @@ namespace Application.Services
                 if (!result.IsSuccess)
                     return result;
 
-                await _solicitudRepository.UpdateAsync(solicitud);
+                await _solicitudRepository.ActualizarAsync(solicitud);
                 await _unitOfWork.SaveChangesAsync();
                 await _unitOfWork.CommitTransactionAsync();
 
@@ -522,7 +522,7 @@ namespace Application.Services
 
                 await _unitOfWork.BeginTransactionAsync();
 
-                var solicitud = await _solicitudRepository.GetByIdWithDetailsAsync(solicitudId);
+                var solicitud = await _solicitudRepository.ObtenerPorIdAsync(solicitudId);
                 if (solicitud == null)
                     return Result.Failure("Solicitud no encontrada");
 
@@ -539,7 +539,7 @@ namespace Application.Services
                 if (!result.IsSuccess)
                     return result;
 
-                await _solicitudRepository.UpdateAsync(solicitud);
+                await _solicitudRepository.ActualizarAsync(solicitud);
                 await _unitOfWork.SaveChangesAsync();
                 await _unitOfWork.CommitTransactionAsync();
 
@@ -567,7 +567,7 @@ namespace Application.Services
 
                 await _unitOfWork.BeginTransactionAsync();
 
-                var solicitud = await _solicitudRepository.GetByIdWithDetailsAsync(solicitudId);
+                var solicitud = await _solicitudRepository.ObtenerPorIdAsync(solicitudId);
                 if (solicitud == null)
                     return Result.Failure("Solicitud no encontrada");
 
@@ -583,7 +583,7 @@ namespace Application.Services
                 solicitud.Estado = EstadoSolicitud.DocumentacionIncompleta;
                 solicitud.ObservacionesInternas = $"Documentos faltantes: {string.Join(", ", documentosFaltantes)}";
 
-                await _solicitudRepository.UpdateAsync(solicitud);
+                await _solicitudRepository.ActualizarAsync(solicitud);
                 await _unitOfWork.SaveChangesAsync();
                 await _unitOfWork.CommitTransactionAsync();
 
@@ -608,7 +608,7 @@ namespace Application.Services
             {
                 await _unitOfWork.BeginTransactionAsync();
 
-                var solicitud = await _solicitudRepository.GetByIdWithDetailsAsync(solicitudId);
+                var solicitud = await _solicitudRepository.ObtenerPorIdAsync(solicitudId);
                 if (solicitud == null)
                     return Result.Failure("Solicitud no encontrada");
 
@@ -628,7 +628,7 @@ namespace Application.Services
                 solicitud.Activo = false;
                 solicitud.FechaModificacion = DateTime.Now;
 
-                await _solicitudRepository.UpdateAsync(solicitud);
+                await _solicitudRepository.ActualizarAsync(solicitud);
                 await _unitOfWork.SaveChangesAsync();
                 await _unitOfWork.CommitTransactionAsync();
 
@@ -648,7 +648,7 @@ namespace Application.Services
         {
             try
             {
-                var solicitud = await _solicitudRepository.GetByIdWithDetailsAsync(solicitudId);
+                var solicitud = await _solicitudRepository.ObtenerPorIdAsync(solicitudId);
                 if (solicitud == null)
                     return Result<DetalleSolicitudDto>.Failure("Solicitud no encontrada");
 
@@ -676,7 +676,7 @@ namespace Application.Services
         {
             try
             {
-                var solicitudes = await _solicitudRepository.GetByAfiliadoIdAsync(afiliadoId);
+                var solicitudes = await _solicitudRepository.ObtenerPorAfiliadoAsync(afiliadoId);
                 var response = solicitudes.Select(s => MapearASolicitudResponseDto(s)).ToList();
                 return Result<List<SolicitudResponseDto>>.Success(response);
             }
@@ -693,7 +693,7 @@ namespace Application.Services
         {
             try
             {
-                var solicitudes = await _solicitudRepository.GetPendientesAsync();
+                var solicitudes = await _solicitudRepository.ObtenerPendientesAsync();
                 var response = solicitudes.Select(s => MapearASolicitudResponseDto(s)).ToList();
                 return Result<List<SolicitudResponseDto>>.Success(response);
             }
@@ -710,7 +710,7 @@ namespace Application.Services
         {
             try
             {
-                var solicitudes = await _solicitudRepository.GetAllAsync();
+                var solicitudes = await _solicitudRepository.ObtenerTodasAsync();
                 var response = solicitudes.Select(s => MapearASolicitudResponseDto(s)).ToList();
                 return Result<List<SolicitudResponseDto>>.Success(response);
             }
@@ -727,36 +727,55 @@ namespace Application.Services
         {
             try
             {
+                // ✅ Construir el criterio de búsqueda
+                string? criterioBusqueda = null;
+                if (!string.IsNullOrWhiteSpace(filtros.NumeroSolicitud))
+                {
+                    criterioBusqueda = filtros.NumeroSolicitud;
+                }
+                else if (!string.IsNullOrWhiteSpace(filtros.MatriculaProfesional))
+                {
+                    criterioBusqueda = filtros.MatriculaProfesional;
+                }
+
+                // Llamar con los parámetros en el orden correcto
                 var solicitudes = await _solicitudRepository.BuscarAsync(
-                    filtros.NumeroSolicitud,
-                    filtros.MatriculaProfesional,
-                    filtros.Estado,
-                    filtros.TipoSubsidio);
+                    estado: filtros.Estado,                    // 1° parámetro
+                    tipoSubsidio: filtros.TipoSubsidio,       // 2° parámetro
+                    fechaDesde: filtros.FechaDesde,           // 3° parámetro
+                    fechaHasta: filtros.FechaHasta,           // 4° parámetro
+                    criterioBusqueda: criterioBusqueda,       // 5° parámetro
+                    afiliadoId: null                          // 6° parámetro
+                );
 
-                // Aplicar filtro de fechas si existe
-                if (filtros.FechaDesde.HasValue)
-                {
-                    solicitudes = solicitudes.Where(s => s.FechaSolicitud >= filtros.FechaDesde.Value);
-                }
-                if (filtros.FechaHasta.HasValue)
-                {
-                    solicitudes = solicitudes.Where(s => s.FechaSolicitud <= filtros.FechaHasta.Value);
-                }
-
-                var totalRegistros = solicitudes.Count();
-
-                // Paginación
+                // Aplicar paginación
+                var totalRegistros = solicitudes.Count;
                 var solicitudesPaginadas = solicitudes
                     .Skip((filtros.PaginaActual - 1) * filtros.RegistrosPorPagina)
                     .Take(filtros.RegistrosPorPagina)
-                    .Select(s => MapearASolicitudResponseDto(s))
                     .ToList();
 
-                var resultado = new PaginatedListDto<SolicitudResponseDto>(
-                    solicitudesPaginadas,
-                    totalRegistros,
-                    filtros.PaginaActual,
-                    filtros.RegistrosPorPagina);
+                // Mapear a DTOs
+                var solicitudesDto = solicitudesPaginadas.Select(s => new SolicitudResponseDto
+                {
+                    Id = s.Id,
+                    NumeroSolicitud = s.NumeroSolicitud,
+                    TipoSubsidio = s.TipoSubsidio,
+                    Estado = s.Estado,
+                    FechaSolicitud = s.FechaSolicitud,
+                    NombreCompletoAfiliado = $"{s.AfiliadoSolicitante.Apellido}, {s.AfiliadoSolicitante.Nombre}",
+                    MatriculaAfiliado = s.AfiliadoSolicitante.MatriculaProfesional,
+                    // ... otras propiedades según tu DTO
+                }).ToList();
+
+                var resultado = new PaginatedListDto<SolicitudResponseDto>
+                {
+                    Items = solicitudesDto,
+                    TotalRegistros = totalRegistros,
+                    PaginaActual = filtros.PaginaActual,
+                    RegistrosPorPagina = filtros.RegistrosPorPagina,
+                    TotalPaginas = (int)Math.Ceiling(totalRegistros / (double)filtros.RegistrosPorPagina)
+                };
 
                 return Result<PaginatedListDto<SolicitudResponseDto>>.Success(resultado);
             }

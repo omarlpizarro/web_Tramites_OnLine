@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Events
 {
     // ==========================================
-    // EVENTOS ESPECÍFICOS
+    // EVENTOS ESPEC�FICOS
     // ==========================================
 
     public class SolicitudCreadaEvent : DomainEvent

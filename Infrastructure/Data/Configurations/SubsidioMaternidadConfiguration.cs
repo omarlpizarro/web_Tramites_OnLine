@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -29,7 +29,7 @@ namespace Infrastructure.Data.Configurations
             builder.Property(s => s.Ciudad).HasMaxLength(100);
             builder.Property(s => s.Provincia).HasMaxLength(100);
 
-            // Relación 1:1 con SolicitudSubsidio
+            // Relaci�n 1:1 con SolicitudSubsidio
             builder.HasOne(s => s.Solicitud)
                 .WithOne(sol => sol.SubsidioMaternidad)
                 .HasForeignKey<SubsidioMaternidad>(s => s.SolicitudSubsidioId)

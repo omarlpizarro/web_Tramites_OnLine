@@ -1,4 +1,4 @@
-Ôªøusing Capsap.Domain.Constants;
+using Capsap.Domain.Constants;
 using Capsap.Domain.Entities;
 using Capsap.Domain.Enums;
 using Capsap.Domain.ValueObjects;
@@ -17,7 +17,7 @@ namespace Capsap.Domain.Services
         {
             if (!afiliado.Activo)
             {
-                return Result.Failure("El afiliado no est√° activo en el sistema.");
+                return Result.Failure("El afiliado no est· activo en el sistema.");
             }
 
             if (afiliado.TieneDeuda)
@@ -32,7 +32,7 @@ namespace Capsap.Domain.Services
         {
             if (string.IsNullOrWhiteSpace(afiliado.MatriculaProfesional))
             {
-                return Result.Failure("El afiliado no tiene matr√≠cula profesional asignada.");
+                return Result.Failure("El afiliado no tiene matrÌcula profesional asignada.");
             }
 
             if (string.IsNullOrWhiteSpace(afiliado.Email))

@@ -1,4 +1,4 @@
-ï»¿using Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,13 +25,13 @@ namespace Capsap.Domain.ValueObjects
         {
             if (string.IsNullOrWhiteSpace(numero))
             {
-                return Result<DocumentoIdentidad>.Failure("El nÃºmero de documento es requerido");
+                return Result<DocumentoIdentidad>.Failure("El número de documento es requerido");
             }
 
-            // Limpiar el nÃºmero (remover puntos y espacios)
+            // Limpiar el número (remover puntos y espacios)
             numero = numero.Replace(".", "").Replace(" ", "").Trim();
 
-            // Validar segÃºn tipo
+            // Validar según tipo
             var validacion = tipo switch
             {
                 TipoDocumentoIdentidad.DNI => ValidarDNI(numero),
@@ -50,15 +50,15 @@ namespace Capsap.Domain.ValueObjects
 
         private static Result ValidarDNI(string dni)
         {
-            // DNI debe tener entre 7 y 8 dÃ­gitos
+            // DNI debe tener entre 7 y 8 dígitos
             if (dni.Length < 7 || dni.Length > 8)
             {
-                return Result.Failure("El DNI debe tener entre 7 y 8 dÃ­gitos");
+                return Result.Failure("El DNI debe tener entre 7 y 8 dígitos");
             }
 
             if (!dni.All(char.IsDigit))
             {
-                return Result.Failure("El DNI solo puede contener nÃºmeros");
+                return Result.Failure("El DNI solo puede contener números");
             }
 
             return Result.Success();
@@ -66,21 +66,21 @@ namespace Capsap.Domain.ValueObjects
 
         private static Result ValidarCUIL(string cuil)
         {
-            // CUIL debe tener exactamente 11 dÃ­gitos
+            // CUIL debe tener exactamente 11 dígitos
             if (cuil.Length != 11)
             {
-                return Result.Failure("El CUIL debe tener exactamente 11 dÃ­gitos");
+                return Result.Failure("El CUIL debe tener exactamente 11 dígitos");
             }
 
             if (!cuil.All(char.IsDigit))
             {
-                return Result.Failure("El CUIL solo puede contener nÃºmeros");
+                return Result.Failure("El CUIL solo puede contener números");
             }
 
-            // Validar dÃ­gito verificador
+            // Validar dígito verificador
             if (!ValidarDigitoVerificadorCUIL(cuil))
             {
-                return Result.Failure("El CUIL ingresado no es vÃ¡lido (dÃ­gito verificador incorrecto)");
+                return Result.Failure("El CUIL ingresado no es válido (dígito verificador incorrecto)");
             }
 
             return Result.Success();

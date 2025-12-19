@@ -1,4 +1,4 @@
-ï»¿using Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace Capsap.Domain.Exceptions
     // ==========================================
 
     /// <summary>
-    /// ExcepciÃ³n lanzada cuando una transiciÃ³n de estado no es permitida
+    /// Excepción lanzada cuando una transición de estado no es permitida
     /// </summary>
     public class TransicionEstadoInvalidaException : DomainException
     {

@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Interfaces.Repositories
 {
     // ==========================================
-    // REPOSITORIO BASE GENÉRICO
+    // REPOSITORIO BASE GEN�RICO
     // ==========================================
     public interface IRepositoryBase<T> where T : EntityBase
     {

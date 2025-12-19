@@ -1,4 +1,4 @@
-ï»¿using Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using Capsap.Domain.Enums;
 using Capsap.Domain.ValueObjects;
 using System;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Services
 {
     // ==========================================
-    // SERVICIO DE VALIDACIÃ“N DE DOCUMENTACIÃ“N
+    // SERVICIO DE VALIDACIÓN DE DOCUMENTACIÓN
     // ==========================================
     public interface IValidacionDocumentacionDomainService
     {

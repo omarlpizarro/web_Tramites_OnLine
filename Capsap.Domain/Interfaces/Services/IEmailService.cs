@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace Capsap.Domain.Interfaces.Services
         Task EnviarEmailAsync(string destinatario, string asunto, string cuerpoHtml);
         Task EnviarEmailConAdjuntoAsync(string destinatario, string asunto, string cuerpoHtml, byte[] adjunto, string nombreArchivo);
 
-        // Emails específicos del negocio
+        // Emails espec�ficos del negocio
         Task EnviarEmailSolicitudCreadaAsync(SolicitudSubsidio solicitud);
         Task EnviarEmailSolicitudEnviadaAsync(SolicitudSubsidio solicitud);
         Task EnviarEmailSolicitudAprobadaAsync(SolicitudSubsidio solicitud);

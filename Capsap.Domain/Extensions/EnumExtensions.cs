@@ -1,4 +1,4 @@
-锘縰sing Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +18,8 @@ namespace Capsap.Domain.Extensions
             {
                 EstadoSolicitud.Borrador => "Borrador",
                 EstadoSolicitud.Enviada => "Enviada",
-                EstadoSolicitud.EnRevision => "En Revisi贸n",
-                EstadoSolicitud.DocumentacionIncompleta => "Documentaci贸n Incompleta",
+                EstadoSolicitud.EnRevision => "En Revisi髇",
+                EstadoSolicitud.DocumentacionIncompleta => "Documentaci髇 Incompleta",
                 EstadoSolicitud.Aprobada => "Aprobada",
                 EstadoSolicitud.Rechazada => "Rechazada",
                 EstadoSolicitud.Pagada => "Pagada",
@@ -33,7 +33,7 @@ namespace Capsap.Domain.Extensions
             {
                 TipoSubsidio.Matrimonio => "Subsidio por Matrimonio",
                 TipoSubsidio.Maternidad => "Subsidio por Maternidad",
-                TipoSubsidio.NacimientoAdopcion => "Subsidio por Nacimiento/Adopci贸n",
+                TipoSubsidio.NacimientoAdopcion => "Subsidio por Nacimiento/Adopci髇",
                 TipoSubsidio.HijoDiscapacitado => "Subsidio por Hijo Discapacitado",
                 _ => "Desconocido"
             };
@@ -44,16 +44,16 @@ namespace Capsap.Domain.Extensions
             return tipo switch
             {
                 TipoDocumento.DNISolicitante => "DNI del Solicitante",
-                TipoDocumento.DNIConyuge => "DNI del C贸nyuge",
+                TipoDocumento.DNIConyuge => "DNI del C髇yuge",
                 TipoDocumento.ConstanciaCBU => "Constancia de CBU",
                 TipoDocumento.ActaMatrimonio => "Acta de Matrimonio",
                 TipoDocumento.ActaNacimiento => "Acta de Nacimiento",
-                TipoDocumento.DNIRecienNacido => "DNI del Reci茅n Nacido",
-                TipoDocumento.SentenciaAdopcion => "Sentencia de Adopci贸n",
-                TipoDocumento.SentenciaFiliacion => "Sentencia de Filiaci贸n",
+                TipoDocumento.DNIRecienNacido => "DNI del Reci閚 Nacido",
+                TipoDocumento.SentenciaAdopcion => "Sentencia de Adopci髇",
+                TipoDocumento.SentenciaFiliacion => "Sentencia de Filiaci髇",
                 TipoDocumento.CertificadoDiscapacidad => "Certificado de Discapacidad",
                 TipoDocumento.CertificadoSupervivencia => "Certificado de Supervivencia",
-                TipoDocumento.AutorizacionTransferencia => "Autorizaci贸n de Transferencia",
+                TipoDocumento.AutorizacionTransferencia => "Autorizaci髇 de Transferencia",
                 _ => "Otros"
             };
         }
@@ -78,7 +78,7 @@ namespace Capsap.Domain.Extensions
                 EstadoCivil.Casado => "Casado/a",
                 EstadoCivil.Divorciado => "Divorciado/a",
                 EstadoCivil.Viudo => "Viudo/a",
-                EstadoCivil.Concubinato => "Concubinato/Uni贸n Convivencial",
+                EstadoCivil.Concubinato => "Concubinato/Uni髇 Convivencial",
                 _ => "Desconocido"
             };
         }

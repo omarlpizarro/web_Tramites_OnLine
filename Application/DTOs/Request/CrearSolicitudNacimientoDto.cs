@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +19,7 @@ namespace Application.DTOs.Request
         public string TipoCuenta { get; set; }
         public string Banco { get; set; }
 
-        // ✅ AGREGADA: Observaciones
+        // ? AGREGADA: Observaciones
         public string Observaciones { get; set; }
     }
 

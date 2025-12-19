@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +20,7 @@ namespace Application.DTOs.Request
         public string CiudadNacimiento { get; set; }
         public string ProvinciaNacimiento { get; set; }
 
-        // AdopciÃ³n/FiliaciÃ³n (si aplica)
+        // Adopción/Filiación (si aplica)
         public DateTime? FechaSentenciaJudicial { get; set; }
         public string CiudadSentencia { get; set; }
         public string ProvinciaSentencia { get; set; }

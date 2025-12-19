@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Exceptions
 {
     /// <summary>
-    /// Excepción lanzada cuando el tamaño del archivo excede el límite
+    /// Excepci�n lanzada cuando el tama�o del archivo excede el l�mite
     /// </summary>
     public class ArchivoMuyGrandeException : DomainException
     {
@@ -17,7 +17,7 @@ namespace Capsap.Domain.Exceptions
 
         public ArchivoMuyGrandeException(string nombreArchivo, long tamanoBytes, long tamanoMaximoBytes)
             : base(
-                $"El archivo '{nombreArchivo}' excede el tamaño máximo permitido. Tamaño: {tamanoBytes / 1024 / 1024} MB, Máximo: {tamanoMaximoBytes / 1024 / 1024} MB.",
+                $"El archivo '{nombreArchivo}' excede el tama�o m�ximo permitido. Tama�o: {tamanoBytes / 1024 / 1024} MB, M�ximo: {tamanoMaximoBytes / 1024 / 1024} MB.",
                 "ARCHIVO_MUY_GRANDE")
         {
             NombreArchivo = nombreArchivo;

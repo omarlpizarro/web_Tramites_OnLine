@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using Capsap.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Application.Services
 {
     // ==========================================
-    // SERVICIO DE VALIDACIÓN
+    // SERVICIO DE VALIDACI�N
     // ==========================================
     public interface IValidacionService
     {

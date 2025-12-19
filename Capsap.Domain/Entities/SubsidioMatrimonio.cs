@@ -1,4 +1,4 @@
-ï»¿using Capsap.Domain.ValueObjects;
+using Capsap.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,7 @@ namespace Capsap.Domain.Entities
         public string CUILConyuge { get; set; }
         public bool AmbosAfiliadosActivos { get; set; }
 
-        // ValidaciÃ³n de plazo (180 dÃ­as corridos desde la celebraciÃ³n)
+        // Validación de plazo (180 días corridos desde la celebración)
         public bool DentroDePlazo => (DateTime.Now - FechaCelebracion).TotalDays <= 180;
 
         public virtual SolicitudSubsidio Solicitud { get; set; }

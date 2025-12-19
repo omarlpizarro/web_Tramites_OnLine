@@ -1,4 +1,4 @@
-锘縰sing Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace Capsap.Domain.Services
 
         public decimal ObtenerMontoBase(TipoSubsidio tipoSubsidio)
         {
-            // Estos valores deber铆an venir de configuraci贸n o base de datos
+            // Estos valores deber韆n venir de configuraci髇 o base de datos
             return tipoSubsidio switch
             {
                 TipoSubsidio.Matrimonio => 50000m,
@@ -34,20 +34,20 @@ namespace Capsap.Domain.Services
         {
             decimal montoFinal = montoBase;
 
-            // Ejemplo: Si ambos c贸nyuges son afiliados, bonificaci贸n del 20%
+            // Ejemplo: Si ambos c髇yuges son afiliados, bonificaci髇 del 20%
             if (solicitud.TipoSubsidio == TipoSubsidio.Matrimonio &&
                 solicitud.SubsidioMatrimonio?.AmbosAfiliadosActivos == true)
             {
                 montoFinal *= 1.20m;
             }
 
-            // Ejemplo: M煤ltiples hijos en nacimiento/adopci贸n
+            // Ejemplo: M鷏tiples hijos en nacimiento/adopci髇
             if (solicitud.TipoSubsidio == TipoSubsidio.NacimientoAdopcion)
             {
                 var cantidadHijos = solicitud.SubsidioNacimientoAdopcion?.Hijos?.Count ?? 1;
                 if (cantidadHijos > 1)
                 {
-                    // Bonificaci贸n del 50% por cada hijo adicional
+                    // Bonificaci髇 del 50% por cada hijo adicional
                     montoFinal += (montoBase * 0.5m * (cantidadHijos - 1));
                 }
             }

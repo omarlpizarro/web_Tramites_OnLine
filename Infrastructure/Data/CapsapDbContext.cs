@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
@@ -53,7 +53,7 @@ namespace Infrastructure.Data
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            // Actualizar automáticamente FechaModificacion
+            // Actualizar autom�ticamente FechaModificacion
             var entries = ChangeTracker.Entries()
                 .Where(e => e.Entity is EntityBase &&
                            (e.State == EntityState.Modified));
@@ -68,12 +68,12 @@ namespace Infrastructure.Data
 
         private void SeedData(ModelBuilder modelBuilder)
         {
-            // Configuración inicial del sistema
+            // Configuraci�n inicial del sistema
             modelBuilder.Entity<ConfiguracionSistema>().HasData(
-                new ConfiguracionSistema { Id = 1, Clave = "Subsidio.Matrimonio.PlazoMaximoDias", Valor = "180", Descripcion = "Plazo máximo en días para solicitar subsidio por matrimonio", TipoDato = "int", FechaCreacion = DateTime.Now, Activo = true },
-                new ConfiguracionSistema { Id = 2, Clave = "Subsidio.Maternidad.PlazoMaximoDias", Valor = "180", Descripcion = "Plazo máximo en días para solicitar subsidio por maternidad", TipoDato = "int", FechaCreacion = DateTime.Now, Activo = true },
-                new ConfiguracionSistema { Id = 3, Clave = "Subsidio.Nacimiento.PlazoMaximoDias", Valor = "180", Descripcion = "Plazo máximo en días para solicitar subsidio por nacimiento/adopción", TipoDato = "int", FechaCreacion = DateTime.Now, Activo = true },
-                new ConfiguracionSistema { Id = 4, Clave = "Documentos.TamanoMaximoMB", Valor = "10", Descripcion = "Tamaño máximo de archivo en MB", TipoDato = "decimal", FechaCreacion = DateTime.Now, Activo = true },
+                new ConfiguracionSistema { Id = 1, Clave = "Subsidio.Matrimonio.PlazoMaximoDias", Valor = "180", Descripcion = "Plazo m�ximo en d�as para solicitar subsidio por matrimonio", TipoDato = "int", FechaCreacion = DateTime.Now, Activo = true },
+                new ConfiguracionSistema { Id = 2, Clave = "Subsidio.Maternidad.PlazoMaximoDias", Valor = "180", Descripcion = "Plazo m�ximo en d�as para solicitar subsidio por maternidad", TipoDato = "int", FechaCreacion = DateTime.Now, Activo = true },
+                new ConfiguracionSistema { Id = 3, Clave = "Subsidio.Nacimiento.PlazoMaximoDias", Valor = "180", Descripcion = "Plazo m�ximo en d�as para solicitar subsidio por nacimiento/adopci�n", TipoDato = "int", FechaCreacion = DateTime.Now, Activo = true },
+                new ConfiguracionSistema { Id = 4, Clave = "Documentos.TamanoMaximoMB", Valor = "10", Descripcion = "Tama�o m�ximo de archivo en MB", TipoDato = "decimal", FechaCreacion = DateTime.Now, Activo = true },
                 new ConfiguracionSistema { Id = 5, Clave = "Documentos.FormatosPermitidos", Valor = "pdf,jpg,jpeg,png", Descripcion = "Formatos de archivo permitidos", TipoDato = "string", FechaCreacion = DateTime.Now, Activo = true },
                 new ConfiguracionSistema { Id = 6, Clave = "Sistema.EmailNotificaciones", Valor = "notificaciones@capsap.gov.ar", Descripcion = "Email para notificaciones del sistema", TipoDato = "string", FechaCreacion = DateTime.Now, Activo = true }
             );

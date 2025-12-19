@@ -1,4 +1,4 @@
-Ôªøusing Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using Capsap.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Entities
 {
     // ==========================================
-    // SUBSIDIO HIJO DISCAPACITADO - Factory Method (YA EXIST√çA)
+    // SUBSIDIO HIJO DISCAPACITADO - Factory Method (YA EXISTÕA)
     // ==========================================
     public partial class SubsidioHijoDiscapacitado : EntityBase
     {
         /// <summary>
         /// Factory Method ya implementado anteriormente
-        /// Este est√° correcto y no necesita cambios
+        /// Este est· correcto y no necesita cambios
         /// </summary>
         public static Result<SubsidioHijoDiscapacitado> Crear(
             SolicitudSubsidio solicitud,
@@ -29,7 +29,7 @@ namespace Capsap.Domain.Entities
             DateTime fechaVencimientoCertificado,
             string lugarEmision)
         {
-            // Validaciones b√°sicas
+            // Validaciones b·sicas
             if (string.IsNullOrWhiteSpace(nombre))
             {
                 return Result<SubsidioHijoDiscapacitado>.Failure("Debe proporcionar el nombre del hijo");
@@ -37,22 +37,22 @@ namespace Capsap.Domain.Entities
 
             if (string.IsNullOrWhiteSpace(numeroCertificadoDiscapacidad))
             {
-                return Result<SubsidioHijoDiscapacitado>.Failure("Debe proporcionar el n√∫mero de certificado de discapacidad");
+                return Result<SubsidioHijoDiscapacitado>.Failure("Debe proporcionar el n˙mero de certificado de discapacidad");
             }
 
-            // Validaci√≥n: Certificado no debe estar vencido
+            // ValidaciÛn: Certificado no debe estar vencido
             if (fechaVencimientoCertificado < DateTime.Now)
             {
                 return Result<SubsidioHijoDiscapacitado>.Failure(
-                    $"El certificado de discapacidad est√° vencido. Fecha de vencimiento: {fechaVencimientoCertificado:dd/MM/yyyy}"
+                    $"El certificado de discapacidad est· vencido. Fecha de vencimiento: {fechaVencimientoCertificado:dd/MM/yyyy}"
                 );
             }
 
-            // Validaci√≥n: Fecha de emisi√≥n debe ser anterior a la fecha de vencimiento
+            // ValidaciÛn: Fecha de emisiÛn debe ser anterior a la fecha de vencimiento
             if (fechaEmisionCertificado >= fechaVencimientoCertificado)
             {
                 return Result<SubsidioHijoDiscapacitado>.Failure(
-                    "La fecha de emisi√≥n debe ser anterior a la fecha de vencimiento"
+                    "La fecha de emisiÛn debe ser anterior a la fecha de vencimiento"
                 );
             }
 

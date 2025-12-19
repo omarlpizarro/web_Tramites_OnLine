@@ -1,4 +1,4 @@
-ï»¿using Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using Capsap.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace Capsap.Domain.Entities
     public partial class SubsidioMaternidad : EntityBase
     {
         public int SolicitudSubsidioId { get; set; }
-        public TipoEventoMaternidad TipoEvento { get; set; } // Nacimiento o AdopciÃ³n
+        public TipoEventoMaternidad TipoEvento { get; set; } // Nacimiento o Adopción
         public DateTime FechaEvento { get; set; } // Fecha nacimiento o sentencia
         public string ActaNumero { get; set; }
         public string Tomo { get; set; }
@@ -27,7 +27,7 @@ namespace Capsap.Domain.Entities
         public string DNIHijo { get; set; }
         public string CUILHijo { get; set; }
 
-        // AdopciÃ³n
+        // Adopción
         public DateTime? FechaSentenciaJudicial { get; set; }
         public string CiudadSentencia { get; set; }
         public string ProvinciaSentencia { get; set; }

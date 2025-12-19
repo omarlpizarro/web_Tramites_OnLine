@@ -1,4 +1,4 @@
-锘縰sing Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using Capsap.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Entities
 {
     // ==========================================
-    // SUBSIDIO NACIMIENTO/ADOPCI脫N - Factory Method
+    // SUBSIDIO NACIMIENTO/ADOPCI覰 - Factory Method
     // ==========================================
     public partial class SubsidioNacimientoAdopcion : EntityBase
     {
         private const int PLAZO_MAXIMO_DIAS = 180;
 
         /// <summary>
-        /// Factory Method para crear subsidio de nacimiento/adopci贸n con validaciones
+        /// Factory Method para crear subsidio de nacimiento/adopci髇 con validaciones
         /// </summary>
         public static Result<SubsidioNacimientoAdopcion> Crear(
             SolicitudSubsidio solicitud,
@@ -39,21 +39,21 @@ namespace Capsap.Domain.Entities
         /// </summary>
         public Result AgregarHijo(HijoNacimientoAdopcion hijo)
         {
-            // Validaci贸n: Fecha de nacimiento no puede ser futura
+            // Validaci髇: Fecha de nacimiento no puede ser futura
             if (hijo.FechaNacimiento > DateTime.Now)
             {
                 return Result.Failure("La fecha de nacimiento no puede ser futura");
             }
 
-            // Validaci贸n: Plazo de 180 d铆as
+            // Validaci髇: Plazo de 180 d韆s
             var fechaEvento = hijo.FechaSentenciaJudicial ?? hijo.FechaNacimiento;
             var diasTranscurridos = (DateTime.Now - fechaEvento).TotalDays;
 
             if (diasTranscurridos > PLAZO_MAXIMO_DIAS)
             {
                 return Result.Failure(
-                    $"Ha transcurrido el plazo de {PLAZO_MAXIMO_DIAS} d铆as corridos desde el nacimiento/adopci贸n. " +
-                    $"(D铆as transcurridos: {Math.Floor(diasTranscurridos)})"
+                    $"Ha transcurrido el plazo de {PLAZO_MAXIMO_DIAS} d韆s corridos desde el nacimiento/adopci髇. " +
+                    $"(D韆s transcurridos: {Math.Floor(diasTranscurridos)})"
                 );
             }
 

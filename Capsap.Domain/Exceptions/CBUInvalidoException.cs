@@ -1,4 +1,4 @@
-Ôªøusing System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Exceptions
 {
     // ==========================================
-    // EXCEPCIONES DE VALIDACI√ìN
+    // EXCEPCIONES DE VALIDACI”N
     // ==========================================
 
     /// <summary>
-    /// Excepci√≥n lanzada cuando un CBU no es v√°lido
+    /// ExcepciÛn lanzada cuando un CBU no es v·lido
     /// </summary>
     public class CBUInvalidoException : DomainException
     {
@@ -19,7 +19,7 @@ namespace Capsap.Domain.Exceptions
 
         public CBUInvalidoException(string cbu)
             : base(
-                $"El CBU '{cbu}' no es v√°lido. Debe tener 22 d√≠gitos num√©ricos.",
+                $"El CBU '{cbu}' no es v·lido. Debe tener 22 dÌgitos numÈricos.",
                 "CBU_INVALIDO")
         {
             CBU = cbu;
@@ -28,7 +28,7 @@ namespace Capsap.Domain.Exceptions
 
         public CBUInvalidoException(string cbu, string razon)
             : base(
-                $"El CBU '{cbu}' no es v√°lido. {razon}",
+                $"El CBU '{cbu}' no es v·lido. {razon}",
                 "CBU_INVALIDO")
         {
             CBU = cbu;

@@ -1,4 +1,4 @@
-ï»¿using Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Infrastructure.Data.Configurations
 {
     // ==========================================
-    // SUBSIDIO NACIMIENTO/ADOPCIÃ“N CONFIGURATION
+    // SUBSIDIO NACIMIENTO/ADOPCIÓN CONFIGURATION
     // ==========================================
     public class SubsidioNacimientoAdopcionConfiguration : IEntityTypeConfiguration<SubsidioNacimientoAdopcion>
     {
@@ -20,13 +20,13 @@ namespace Infrastructure.Data.Configurations
 
             builder.HasKey(s => s.Id);
 
-            // RelaciÃ³n 1:1 con SolicitudSubsidio
+            // Relación 1:1 con SolicitudSubsidio
             builder.HasOne(s => s.Solicitud)
                 .WithOne(sol => sol.SubsidioNacimientoAdopcion)
                 .HasForeignKey<SubsidioNacimientoAdopcion>(s => s.SolicitudSubsidioId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // RelaciÃ³n 1:N con Hijos
+            // Relación 1:N con Hijos
             builder.HasMany(s => s.Hijos)
                 .WithOne(h => h.SubsidioNacimiento)
                 .HasForeignKey(h => h.SubsidioNacimientoAdopcionId)

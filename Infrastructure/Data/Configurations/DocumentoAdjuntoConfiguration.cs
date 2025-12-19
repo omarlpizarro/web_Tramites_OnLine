@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -36,7 +36,7 @@ namespace Infrastructure.Data.Configurations
                 .IsRequired(false)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Índices
+            // �ndices
             builder.HasIndex(d => d.SolicitudSubsidioId);
             builder.HasIndex(d => d.TipoDocumento);
         }

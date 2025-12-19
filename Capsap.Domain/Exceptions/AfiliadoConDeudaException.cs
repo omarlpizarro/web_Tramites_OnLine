@@ -1,4 +1,4 @@
-锘縰sing System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +11,7 @@ namespace Capsap.Domain.Exceptions
     // ==========================================
 
     /// <summary>
-    /// Excepci贸n lanzada cuando un afiliado tiene deuda pendiente (Art. 73 Ley 4764/94)
+    /// Excepci髇 lanzada cuando un afiliado tiene deuda pendiente (Art. 73 Ley 4764/94)
     /// </summary>
     public class AfiliadoConDeudaException : DomainException
     {
@@ -21,7 +21,7 @@ namespace Capsap.Domain.Exceptions
 
         public AfiliadoConDeudaException(int afiliadoId)
             : base(
-                "El afiliado tiene deuda pendiente con la instituci贸n. Debe regularizar su situaci贸n antes de solicitar beneficios. (Art. 73 Ley 4764/94)",
+                "El afiliado tiene deuda pendiente con la instituci髇. Debe regularizar su situaci髇 antes de solicitar beneficios. (Art. 73 Ley 4764/94)",
                 "AFILIADO_CON_DEUDA")
         {
             AfiliadoId = afiliadoId;
@@ -30,7 +30,7 @@ namespace Capsap.Domain.Exceptions
 
         public AfiliadoConDeudaException(int afiliadoId, string matriculaProfesional, decimal montoDeuda)
             : base(
-                $"El afiliado con matr铆cula {matriculaProfesional} tiene una deuda pendiente de ${montoDeuda:N2}. Debe regularizar su situaci贸n antes de solicitar beneficios. (Art. 73 Ley 4764/94)",
+                $"El afiliado con matr韈ula {matriculaProfesional} tiene una deuda pendiente de ${montoDeuda:N2}. Debe regularizar su situaci髇 antes de solicitar beneficios. (Art. 73 Ley 4764/94)",
                 "AFILIADO_CON_DEUDA")
         {
             AfiliadoId = afiliadoId;

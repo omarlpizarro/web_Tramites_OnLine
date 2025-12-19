@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.ValueObjects;
+using Capsap.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Interfaces.Services
 {
     // ==========================================
-    // SERVICIO DE VALIDACIÓN DE ARCHIVOS
+    // SERVICIO DE VALIDACI�N DE ARCHIVOS
     // ==========================================
     public interface IValidacionArchivoService
     {

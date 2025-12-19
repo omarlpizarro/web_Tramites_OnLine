@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Exceptions
 {
     // ==========================================
-    // EXCEPCIÃ“N BASE DEL DOMINIO
+    // EXCEPCIÓN BASE DEL DOMINIO
     // ==========================================
     /// <summary>
-    /// ExcepciÃ³n base para todas las excepciones del dominio
+    /// Excepción base para todas las excepciones del dominio
     /// </summary>
     public class DomainException : Exception
     {
@@ -45,7 +45,7 @@ namespace Capsap.Domain.Exceptions
         }
 
         /// <summary>
-        /// Agrega datos adicionales a la excepciÃ³n
+        /// Agrega datos adicionales a la excepción
         /// </summary>
         public void AddData(string key, object value)
         {

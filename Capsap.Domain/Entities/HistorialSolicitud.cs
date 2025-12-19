@@ -1,4 +1,4 @@
-ï»¿using Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Entities
 {
     // ==========================================
-    // HISTORIAL DE SOLICITUD (AuditorÃ­a)
+    // HISTORIAL DE SOLICITUD (Auditoría)
     // ==========================================
     public class HistorialSolicitud : EntityBase
     {
@@ -18,7 +18,7 @@ namespace Capsap.Domain.Entities
         public DateTime FechaCambio { get; set; }
         public int UsuarioId { get; set; }
         public string Comentario { get; set; }
-        public string DatosAdicionales { get; set; } // JSON con informaciÃ³n extra
+        public string DatosAdicionales { get; set; } // JSON con información extra
 
         public virtual SolicitudSubsidio Solicitud { get; set; }
         public virtual Usuario Usuario { get; set; }

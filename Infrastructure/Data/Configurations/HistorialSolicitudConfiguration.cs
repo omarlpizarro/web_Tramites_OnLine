@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -31,7 +31,7 @@ namespace Infrastructure.Data.Configurations
                 .HasForeignKey(h => h.UsuarioId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Índices
+            // �ndices
             builder.HasIndex(h => h.SolicitudSubsidioId);
             builder.HasIndex(h => h.FechaCambio);
         }

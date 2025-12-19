@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +11,7 @@ namespace Capsap.Domain.Enums
         Borrador = 1,           // Iniciada pero no enviada
         Enviada = 2,            // Enviada por el afiliado
         EnRevision = 3,         // Siendo revisada por empleado
-        DocumentacionIncompleta = 4, // Requiere documentación adicional
+        DocumentacionIncompleta = 4, // Requiere documentaci�n adicional
         Aprobada = 5,
         Rechazada = 6,
         Pagada = 7

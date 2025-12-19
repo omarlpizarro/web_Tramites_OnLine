@@ -1,18 +1,22 @@
-﻿using Capsap.Domain.Entities;
+﻿using Application.Interfaces;
+using Capsap.Domain.Entities;
 using Capsap.Domain.Interfaces.Repositories;
+using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Infrastructure.Repositories
 {
     public class AfiliadoRepository : IAfiliadoRepository
     {
-        private readonly ApplicationDbContext _context;
+        private readonly CapsapDbContext _context;
 
-        public AfiliadoRepository(ApplicationDbContext context)
+        public AfiliadoRepository(CapsapDbContext context)
         {
             _context = context;
         }

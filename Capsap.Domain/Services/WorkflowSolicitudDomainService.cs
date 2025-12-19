@@ -1,4 +1,4 @@
-Ôªøusing Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using Capsap.Domain.Enums;
 using Capsap.Domain.ValueObjects;
 using System;
@@ -13,14 +13,14 @@ namespace Capsap.Domain.Services
     {
         public Result PuedeTransicionarAEstado(SolicitudSubsidio solicitud, EstadoSolicitud nuevoEstado, RolUsuario rolUsuario)
         {
-            // Validar que la transici√≥n sea v√°lida seg√∫n el estado actual
+            // Validar que la transiciÛn sea v·lida seg˙n el estado actual
             var validacionTransicion = ValidarTransicion(solicitud.Estado, nuevoEstado);
             if (!validacionTransicion.IsSuccess)
             {
                 return validacionTransicion;
             }
 
-            // Validar permisos seg√∫n rol
+            // Validar permisos seg˙n rol
             var estadosPermitidos = ObtenerEstadosPermitidos(solicitud.Estado, rolUsuario);
             if (!estadosPermitidos.Contains(nuevoEstado))
             {
@@ -84,7 +84,7 @@ namespace Capsap.Domain.Services
 
         public Result ValidarTransicion(EstadoSolicitud estadoActual, EstadoSolicitud nuevoEstado)
         {
-            // Definir transiciones v√°lidas
+            // Definir transiciones v·lidas
             var transicionesValidas = new Dictionary<EstadoSolicitud, List<EstadoSolicitud>>
             {
                 { EstadoSolicitud.Borrador, new List<EstadoSolicitud> { EstadoSolicitud.Enviada } },
@@ -98,7 +98,7 @@ namespace Capsap.Domain.Services
 
             if (!transicionesValidas.ContainsKey(estadoActual))
             {
-                return Result.Failure($"Estado actual {estadoActual} no es v√°lido");
+                return Result.Failure($"Estado actual {estadoActual} no es v·lido");
             }
 
             if (!transicionesValidas[estadoActual].Contains(nuevoEstado))

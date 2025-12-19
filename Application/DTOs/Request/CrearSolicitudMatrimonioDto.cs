@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +22,7 @@ namespace Application.DTOs.Request
         public string Ciudad { get; set; }
         public string Provincia { get; set; }
 
-        // Datos del cónyuge
+        // Datos del c�nyuge
         public string DNIConyuge { get; set; }
         public string CUILConyuge { get; set; }
         public bool AmbosAfiliadosActivos { get; set; }
@@ -35,7 +35,7 @@ namespace Application.DTOs.Request
         public string TitularCuenta { get; set; }
         public string CUITTitular { get; set; }
 
-        // ✅ AGREGADA: Observaciones
+        // ? AGREGADA: Observaciones
         public string Observaciones { get; set; }
     }
 }

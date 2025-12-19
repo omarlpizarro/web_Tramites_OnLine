@@ -1,4 +1,4 @@
-Ôªøusing Application.DTOs.Response;
+using Application.DTOs.Response;
 using Application.Interfaces;
 using Capsap.Domain.Entities;
 using Capsap.Domain.Extensions;
@@ -29,7 +29,7 @@ namespace Application.Services
         {
             try
             {
-                var afiliado = await _afiliadoRepository.GetByIdAsync(id);
+                var afiliado = await _afiliadoRepository.ObtenerPorIdAsync(id);
                 if (afiliado == null)
                     return Result<AfiliadoDto>.Failure("Afiliado no encontrado");
 
@@ -47,11 +47,11 @@ namespace Application.Services
             try
             {
                 if (string.IsNullOrWhiteSpace(matricula))
-                    return Result<AfiliadoDto>.Failure("La matr√≠cula es requerida");
+                    return Result<AfiliadoDto>.Failure("La matrÌcula es requerida");
 
-                var afiliado = await _afiliadoRepository.GetByMatriculaAsync(matricula);
+                var afiliado = await _afiliadoRepository.ObtenerPorMatriculaAsync(matricula);
                 if (afiliado == null)
-                    return Result<AfiliadoDto>.Failure($"No se encontr√≥ afiliado con matr√≠cula {matricula}");
+                    return Result<AfiliadoDto>.Failure($"No se encontrÛ afiliado con matrÌcula {matricula}");
 
                 var dto = MapearAAfiliadoDto(afiliado);
                 return Result<AfiliadoDto>.Success(dto);
@@ -69,9 +69,9 @@ namespace Application.Services
                 if (string.IsNullOrWhiteSpace(dni))
                     return Result<AfiliadoDto>.Failure("El DNI es requerido");
 
-                var afiliado = await _afiliadoRepository.GetByDNIAsync(dni);
+                var afiliado = await _afiliadoRepository.ObtenerPorDNIAsync(dni);
                 if (afiliado == null)
-                    return Result<AfiliadoDto>.Failure($"No se encontr√≥ afiliado con DNI {dni}");
+                    return Result<AfiliadoDto>.Failure($"No se encontrÛ afiliado con DNI {dni}");
 
                 var dto = MapearAAfiliadoDto(afiliado);
                 return Result<AfiliadoDto>.Success(dto);
@@ -86,9 +86,9 @@ namespace Application.Services
         {
             try
             {
-                var afiliado = await _afiliadoRepository.GetByUsuarioIdAsync(usuarioId);
+                var afiliado = await _afiliadoRepository.ObtenerPorUsuarioIdAsync(usuarioId);
                 if (afiliado == null)
-                    return Result<AfiliadoDto>.Failure("No se encontr√≥ afiliado asociado al usuario");
+                    return Result<AfiliadoDto>.Failure("No se encontrÛ afiliado asociado al usuario");
 
                 var dto = MapearAAfiliadoDto(afiliado);
                 return Result<AfiliadoDto>.Success(dto);
@@ -104,7 +104,7 @@ namespace Application.Services
             try
             {
                 if (string.IsNullOrWhiteSpace(criterio))
-                    return Result<List<AfiliadoDto>>.Failure("Debe proporcionar un criterio de b√∫squeda");
+                    return Result<List<AfiliadoDto>>.Failure("Debe proporcionar un criterio de b˙squeda");
 
                 var afiliados = await _afiliadoRepository.BuscarAsync(criterio);
                 var dtos = afiliados.Select(a => MapearAAfiliadoDto(a)).ToList();
@@ -136,7 +136,7 @@ namespace Application.Services
             {
                 await _unitOfWork.BeginTransactionAsync();
 
-                var afiliado = await _afiliadoRepository.GetByIdAsync(afiliadoId);
+                var afiliado = await _afiliadoRepository.ObtenerPorIdAsync(afiliadoId);
                 if (afiliado == null)
                     return Result.Failure("Afiliado no encontrado");
 
@@ -152,7 +152,7 @@ namespace Application.Services
 
                 afiliado.FechaModificacion = DateTime.Now;
 
-                await _afiliadoRepository.UpdateAsync(afiliado);
+                await _afiliadoRepository.ActualizarAsync(afiliado);
                 await _unitOfWork.SaveChangesAsync();
                 await _unitOfWork.CommitTransactionAsync();
 

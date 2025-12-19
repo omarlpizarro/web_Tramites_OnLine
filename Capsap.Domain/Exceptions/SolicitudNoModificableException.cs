@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Exceptions
 {
     /// <summary>
-    /// Excepción lanzada cuando una solicitud no puede ser modificada
+    /// Excepci�n lanzada cuando una solicitud no puede ser modificada
     /// </summary>
     public class SolicitudNoModificableException : DomainException
     {

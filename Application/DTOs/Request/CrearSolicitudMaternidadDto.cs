@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +27,7 @@ namespace Application.DTOs.Request
         public string Ciudad { get; set; }
         public string Provincia { get; set; }
 
-        // ✅ AGREGADAS: Datos de adopción (si aplica)
+        // ? AGREGADAS: Datos de adopci�n (si aplica)
         public DateTime? FechaSentenciaJudicial { get; set; }
         public string CiudadSentencia { get; set; }
         public string ProvinciaSentencia { get; set; }
@@ -37,7 +37,7 @@ namespace Application.DTOs.Request
         public string TipoCuenta { get; set; }
         public string Banco { get; set; }
 
-        // ✅ AGREGADA: Observaciones
+        // ? AGREGADA: Observaciones
         public string Observaciones { get; set; }
     }
 

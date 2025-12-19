@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Helpers
 {
     /// <summary>
-    /// Helper para generación de tokens
+    /// Helper para generaci�n de tokens
     /// </summary>
     public static class TokenHelper
     {

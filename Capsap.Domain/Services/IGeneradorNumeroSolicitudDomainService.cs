@@ -1,4 +1,4 @@
-ï»¿using Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Services
 {
     // ==========================================
-    // SERVICIO DE GENERACIÃ“N DE NÃšMEROS DE SOLICITUD
+    // SERVICIO DE GENERACIÓN DE NÚMEROS DE SOLICITUD
     // ==========================================
     public interface IGeneradorNumeroSolicitudDomainService
     {

@@ -1,4 +1,4 @@
-Ôªøusing System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Exceptions
 {
     /// <summary>
-    /// Excepci√≥n lanzada cuando un DNI no es v√°lido
+    /// ExcepciÛn lanzada cuando un DNI no es v·lido
     /// </summary>
     public class DNIInvalidoException : DomainException
     {
@@ -15,7 +15,7 @@ namespace Capsap.Domain.Exceptions
 
         public DNIInvalidoException(string dni)
             : base(
-                $"El DNI '{dni}' no es v√°lido. Debe tener entre 7 y 8 d√≠gitos num√©ricos.",
+                $"El DNI '{dni}' no es v·lido. Debe tener entre 7 y 8 dÌgitos numÈricos.",
                 "DNI_INVALIDO")
         {
             DNI = dni;
@@ -24,7 +24,7 @@ namespace Capsap.Domain.Exceptions
 
         public DNIInvalidoException(string dni, string razon)
             : base(
-                $"El DNI '{dni}' no es v√°lido. {razon}",
+                $"El DNI '{dni}' no es v·lido. {razon}",
                 "DNI_INVALIDO")
         {
             DNI = dni;

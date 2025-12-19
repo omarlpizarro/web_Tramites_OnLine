@@ -1,4 +1,4 @@
-ï»¿using Capsap.Domain.Constants;
+using Capsap.Domain.Constants;
 using Capsap.Domain.Entities;
 using Capsap.Domain.Enums;
 using Capsap.Domain.ValueObjects;
@@ -118,7 +118,7 @@ namespace Capsap.Domain.Validators
             if (!documentosActivos.Any(d => d.TipoDocumento == TipoDocumento.ConstanciaCBU))
                 return false;
 
-            // Verificar documentos especÃ­ficos segÃºn tipo
+            // Verificar documentos específicos según tipo
             return solicitud.TipoSubsidio switch
             {
                 TipoSubsidio.Matrimonio => documentosActivos.Any(d => d.TipoDocumento == TipoDocumento.ActaMatrimonio),
@@ -131,14 +131,14 @@ namespace Capsap.Domain.Validators
 
         public static decimal PorcentajeCompletitud(this SolicitudSubsidio solicitud)
         {
-            int totalPasos = 4; // Datos bÃ¡sicos, datos especÃ­ficos, documentos, envÃ­o
+            int totalPasos = 4; // Datos básicos, datos específicos, documentos, envío
             int pasosCompletados = 0;
 
-            // Paso 1: Datos bÃ¡sicos completos
+            // Paso 1: Datos básicos completos
             if (!string.IsNullOrEmpty(solicitud.CBU))
                 pasosCompletados++;
 
-            // Paso 2: Datos especÃ­ficos segÃºn tipo
+            // Paso 2: Datos específicos según tipo
             bool tieneDetalleEspecifico = solicitud.TipoSubsidio switch
             {
                 TipoSubsidio.Matrimonio => solicitud.SubsidioMatrimonio != null,

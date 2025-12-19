@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using Capsap.Domain.Enums;
 using Capsap.Domain.Extensions;
 using Capsap.Domain.ValueObjects;
@@ -20,7 +20,7 @@ namespace Capsap.Domain.Services
             {
                 var nombresFaltantes = documentosFaltantes.Select(d => d.ObtenerDescripcion());
                 return Result.Failure(
-                    $"Documentación incompleta. Faltan los siguientes documentos: {string.Join(", ", nombresFaltantes)}"
+                    $"Documentaci�n incompleta. Faltan los siguientes documentos: {string.Join(", ", nombresFaltantes)}"
                 );
             }
 

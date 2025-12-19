@@ -1,4 +1,4 @@
-Ôªøusing System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Exceptions
 {
     /// <summary>
-    /// Excepci√≥n lanzada cuando un CUIL/CUIT no es v√°lido
+    /// ExcepciÛn lanzada cuando un CUIL/CUIT no es v·lido
     /// </summary>
     public class CUILInvalidoException : DomainException
     {
@@ -15,7 +15,7 @@ namespace Capsap.Domain.Exceptions
 
         public CUILInvalidoException(string cuil)
             : base(
-                $"El CUIL/CUIT '{cuil}' no es v√°lido. Debe tener 11 d√≠gitos num√©ricos y un d√≠gito verificador correcto.",
+                $"El CUIL/CUIT '{cuil}' no es v·lido. Debe tener 11 dÌgitos numÈricos y un dÌgito verificador correcto.",
                 "CUIL_INVALIDO")
         {
             CUIL = cuil;
@@ -24,7 +24,7 @@ namespace Capsap.Domain.Exceptions
 
         public CUILInvalidoException(string cuil, string razon)
             : base(
-                $"El CUIL/CUIT '{cuil}' no es v√°lido. {razon}",
+                $"El CUIL/CUIT '{cuil}' no es v·lido. {razon}",
                 "CUIL_INVALIDO")
         {
             CUIL = cuil;

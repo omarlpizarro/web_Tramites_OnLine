@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Capsap.Domain.Specifications
 {
-    // Implementaciones de operadores lógicos
+    // Implementaciones de operadores l�gicos
     internal class AndSpecification<T> : Specification<T>
     {
         private readonly Specification<T> _left;

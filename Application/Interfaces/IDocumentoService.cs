@@ -1,4 +1,4 @@
-﻿using Application.DTOs.Response;
+using Application.DTOs.Response;
 using Capsap.Domain.Enums;
 using Capsap.Domain.ValueObjects;
 using System;

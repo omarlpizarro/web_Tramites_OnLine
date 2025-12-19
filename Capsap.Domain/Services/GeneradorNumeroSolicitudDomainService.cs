@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace Capsap.Domain.Services
         {
             var prefijo = ObtenerPrefijo(tipoSubsidio);
             var periodo = ObtenerPeriodo();
-            var numeroFormateado = correlativo.ToString("D4"); // 4 dígitos con ceros a la izquierda
+            var numeroFormateado = correlativo.ToString("D4"); // 4 d�gitos con ceros a la izquierda
 
             return $"{prefijo}-{periodo}-{numeroFormateado}";
         }

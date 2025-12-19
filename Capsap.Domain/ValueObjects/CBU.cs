@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +19,7 @@ namespace Capsap.Domain.ValueObjects
         {
             if (!EsValido(cbu))
             {
-                return Result<CBU>.Failure("El CBU proporcionado no es vÃ¡lido");
+                return Result<CBU>.Failure("El CBU proporcionado no es válido");
             }
 
             return Result<CBU>.Success(new CBU(cbu));
@@ -33,15 +33,15 @@ namespace Capsap.Domain.ValueObjects
             // Remover espacios y guiones
             cbu = cbu.Replace(" ", "").Replace("-", "");
 
-            // Debe tener exactamente 22 dÃ­gitos
+            // Debe tener exactamente 22 dígitos
             if (cbu.Length != 22)
                 return false;
 
-            // Debe contener solo nÃºmeros
+            // Debe contener solo números
             if (!cbu.All(char.IsDigit))
                 return false;
 
-            // ValidaciÃ³n de dÃ­gitos verificadores
+            // Validación de dígitos verificadores
             return ValidarDigitosVerificadores(cbu);
         }
 

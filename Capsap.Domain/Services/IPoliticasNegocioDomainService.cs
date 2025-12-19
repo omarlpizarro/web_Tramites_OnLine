@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using Capsap.Domain.Enums;
 using Capsap.Domain.ValueObjects;
 using System;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Services
 {
     // ==========================================
-    // SERVICIO DE POLÍTICAS DE NEGOCIO
+    // SERVICIO DE POL�TICAS DE NEGOCIO
     // ==========================================
     public interface IPoliticasNegocioDomainService
     {

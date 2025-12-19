@@ -1,4 +1,4 @@
-锘縰sing Capsap.Domain.ValueObjects;
+using Capsap.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,26 +29,26 @@ namespace Capsap.Domain.Entities
             string cuilConyuge,
             bool ambosAfiliadosActivos = false)
         {
-            // Validaci贸n: Fecha de celebraci贸n no puede ser futura
+            // Validaci髇: Fecha de celebraci髇 no puede ser futura
             if (fechaCelebracion > DateTime.Now)
             {
-                return Result<SubsidioMatrimonio>.Failure("La fecha de celebraci贸n no puede ser futura");
+                return Result<SubsidioMatrimonio>.Failure("La fecha de celebraci髇 no puede ser futura");
             }
 
-            // Validaci贸n: Plazo de 180 d铆as corridos
+            // Validaci髇: Plazo de 180 d韆s corridos
             var diasTranscurridos = (DateTime.Now - fechaCelebracion).TotalDays;
             if (diasTranscurridos > PLAZO_MAXIMO_DIAS)
             {
                 return Result<SubsidioMatrimonio>.Failure(
-                    $"Ha transcurrido el plazo de {PLAZO_MAXIMO_DIAS} d铆as corridos desde la celebraci贸n del matrimonio. " +
-                    $"(D铆as transcurridos: {Math.Floor(diasTranscurridos)})"
+                    $"Ha transcurrido el plazo de {PLAZO_MAXIMO_DIAS} d韆s corridos desde la celebraci髇 del matrimonio. " +
+                    $"(D韆s transcurridos: {Math.Floor(diasTranscurridos)})"
                 );
             }
 
-            // Validaci贸n: DNI del c贸nyuge
+            // Validaci髇: DNI del c髇yuge
             if (string.IsNullOrWhiteSpace(dniConyuge))
             {
-                return Result<SubsidioMatrimonio>.Failure("Debe proporcionar el DNI del c贸nyuge");
+                return Result<SubsidioMatrimonio>.Failure("Debe proporcionar el DNI del c髇yuge");
             }
 
             var subsidio = new SubsidioMatrimonio

@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Exceptions
 {
     /// <summary>
-    /// ExcepciÃ³n lanzada cuando no se encuentra una solicitud
+    /// Excepción lanzada cuando no se encuentra una solicitud
     /// </summary>
     public class SolicitudNoEncontradaException : DomainException
     {
@@ -16,7 +16,7 @@ namespace Capsap.Domain.Exceptions
 
         public SolicitudNoEncontradaException(int solicitudId)
             : base(
-                $"No se encontrÃ³ la solicitud con ID {solicitudId}.",
+                $"No se encontró la solicitud con ID {solicitudId}.",
                 "SOLICITUD_NO_ENCONTRADA")
         {
             SolicitudId = solicitudId;
@@ -25,7 +25,7 @@ namespace Capsap.Domain.Exceptions
 
         public SolicitudNoEncontradaException(string numeroSolicitud)
             : base(
-                $"No se encontrÃ³ la solicitud con nÃºmero {numeroSolicitud}.",
+                $"No se encontró la solicitud con número {numeroSolicitud}.",
                 "SOLICITUD_NO_ENCONTRADA")
         {
             NumeroSolicitud = numeroSolicitud;

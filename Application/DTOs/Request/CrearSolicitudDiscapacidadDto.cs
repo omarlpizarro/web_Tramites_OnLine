@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,14 +18,14 @@ namespace Application.DTOs.Request
         public string DNI { get; set; }
         public string CUIL { get; set; }
 
-        // ✅ AGREGADAS: Acta de nacimiento
+        // ? AGREGADAS: Acta de nacimiento
         public string ActaNumero { get; set; }
         public string Tomo { get; set; }
         public string Anio { get; set; }
         public string CiudadNacimiento { get; set; }
         public string ProvinciaNacimiento { get; set; }
 
-        // Adopción (si aplica)
+        // Adopci�n (si aplica)
         public DateTime? FechaSentenciaJudicial { get; set; }
         public string CiudadSentencia { get; set; }
         public string ProvinciaSentencia { get; set; }
@@ -42,7 +42,7 @@ namespace Application.DTOs.Request
         public string TipoCuenta { get; set; }
         public string Banco { get; set; }
 
-        // ✅ AGREGADA: Observaciones
+        // ? AGREGADA: Observaciones
         public string Observaciones { get; set; }
     }
 

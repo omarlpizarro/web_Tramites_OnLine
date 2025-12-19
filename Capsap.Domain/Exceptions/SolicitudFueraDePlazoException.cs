@@ -1,4 +1,4 @@
-Ôªøusing Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace Capsap.Domain.Exceptions
     // ==========================================
 
     /// <summary>
-    /// Excepci√≥n lanzada cuando una solicitud est√° fuera del plazo permitido (180 d√≠as)
+    /// ExcepciÛn lanzada cuando una solicitud est· fuera del plazo permitido (180 dÌas)
     /// </summary>
     public class SolicitudFueraDePlazoException : DomainException
     {
@@ -23,7 +23,7 @@ namespace Capsap.Domain.Exceptions
 
         public SolicitudFueraDePlazoException(int diasTranscurridos, int plazoMaximo)
             : base(
-                $"La solicitud est√° fuera de plazo. Han transcurrido {diasTranscurridos} d√≠as. El plazo m√°ximo es de {plazoMaximo} d√≠as corridos.",
+                $"La solicitud est· fuera de plazo. Han transcurrido {diasTranscurridos} dÌas. El plazo m·ximo es de {plazoMaximo} dÌas corridos.",
                 "SOLICITUD_FUERA_DE_PLAZO")
         {
             DiasTranscurridos = diasTranscurridos;
@@ -34,7 +34,7 @@ namespace Capsap.Domain.Exceptions
 
         public SolicitudFueraDePlazoException(DateTime fechaEvento, TipoSubsidio tipoSubsidio, int diasTranscurridos, int plazoMaximo)
             : base(
-                $"La solicitud de {tipoSubsidio} est√° fuera de plazo. El evento ocurri√≥ el {fechaEvento:dd/MM/yyyy} ({diasTranscurridos} d√≠as). El plazo m√°ximo es de {plazoMaximo} d√≠as corridos.",
+                $"La solicitud de {tipoSubsidio} est· fuera de plazo. El evento ocurriÛ el {fechaEvento:dd/MM/yyyy} ({diasTranscurridos} dÌas). El plazo m·ximo es de {plazoMaximo} dÌas corridos.",
                 "SOLICITUD_FUERA_DE_PLAZO")
         {
             FechaEvento = fechaEvento;

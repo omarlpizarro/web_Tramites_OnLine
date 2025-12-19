@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces.Services
 {
-    / ==========================================
+// ==========================================
 // IPdfGeneratorService
 // ==========================================
 public interface IPdfGeneratorService

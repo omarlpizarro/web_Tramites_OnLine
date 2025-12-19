@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -56,7 +56,7 @@ namespace Infrastructure.Data.Configurations
             builder.Property(a => a.Provincia)
                 .HasMaxLength(100);
 
-            // Índices
+            // �ndices
             builder.HasIndex(a => a.MatriculaProfesional).IsUnique();
             builder.HasIndex(a => a.DNI).IsUnique();
             builder.HasIndex(a => a.Email);

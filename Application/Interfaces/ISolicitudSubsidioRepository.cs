@@ -19,6 +19,7 @@ namespace Application.Interfaces
         Task<List<SolicitudSubsidio>> ObtenerPorEstadoAsync(EstadoSolicitud estado);
         Task<List<SolicitudSubsidio>> ObtenerPendientesAsync();
         Task<List<SolicitudSubsidio>> ObtenerTodasAsync();
+        Task<int> ObtenerSiguienteCorrelativoAsync(string periodo, string prefijo);
         Task<List<SolicitudSubsidio>> BuscarAsync(
             EstadoSolicitud? estado = null,
             TipoSubsidio? tipoSubsidio = null,
@@ -35,5 +36,8 @@ namespace Application.Interfaces
         Task<int> ContarPorTipoAsync(TipoSubsidio tipo);
         Task<Dictionary<EstadoSolicitud, int>> ObtenerEstadisticasPorEstadoAsync();
         Task AgregarHistorialAsync(HistorialSolicitud historial);
+        Task<int> ContarSolicitudesDelMesAsync();
+        Task<double> ObtenerTiempoPromedioResolucionAsync();
+        Task<List<SolicitudSubsidio>> GetPorRangoFechasAsync(DateTime fechaDesde, DateTime fechaHasta);
     }
 }

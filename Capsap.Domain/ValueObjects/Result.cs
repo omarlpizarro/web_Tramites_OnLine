@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.ValueObjects
 {
     /// <summary>
-    /// Resultado de una operaciÃ³n sin valor de retorno
+    /// Resultado de una operación sin valor de retorno
     /// </summary>
     public class Result
     {
@@ -47,7 +47,7 @@ namespace Capsap.Domain.ValueObjects
             return new Result<T>(default(T), false, error);
         }
 
-        // Combinar mÃºltiples resultados
+        // Combinar múltiples resultados
         public static Result Combine(params Result[] results)
         {
             foreach (var result in results)
@@ -60,7 +60,7 @@ namespace Capsap.Domain.ValueObjects
     }
 
     /// <summary>
-    /// Resultado de una operaciÃ³n con valor de retorno
+    /// Resultado de una operación con valor de retorno
     /// </summary>
     public class Result<T> : Result
     {
@@ -72,7 +72,7 @@ namespace Capsap.Domain.ValueObjects
             Value = value;
         }
 
-        // IMPORTANTE: Estos mÃ©todos estÃ¡ticos devuelven Result<T>, no Result
+        // IMPORTANTE: Estos métodos estáticos devuelven Result<T>, no Result
         public static new Result<T> Success(T value)
         {
             return new Result<T>(value, true, null);
@@ -83,13 +83,13 @@ namespace Capsap.Domain.ValueObjects
             return new Result<T>(default(T), false, error);
         }
 
-        // ConversiÃ³n implÃ­cita de T a Result<T>
+        // Conversión implícita de T a Result<T>
         public static implicit operator Result<T>(T value)
         {
             return Success(value);
         }
 
-        // MÃ©todo para transformar el valor si el resultado es exitoso
+        // Método para transformar el valor si el resultado es exitoso
         public Result<TOutput> Map<TOutput>(Func<T, TOutput> mapper)
         {
             if (IsFailure)
@@ -106,7 +106,7 @@ namespace Capsap.Domain.ValueObjects
             }
         }
 
-        // MÃ©todo para encadenar operaciones que devuelven Result<T>
+        // Método para encadenar operaciones que devuelven Result<T>
         public Result<TOutput> Bind<TOutput>(Func<T, Result<TOutput>> binder)
         {
             if (IsFailure)

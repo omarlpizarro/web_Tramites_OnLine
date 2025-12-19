@@ -1,4 +1,4 @@
-Ôªøusing System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Exceptions
 {
     /// <summary>
-    /// Excepci√≥n lanzada cuando un documento no es v√°lido
+    /// ExcepciÛn lanzada cuando un documento no es v·lido
     /// </summary>
     public class DocumentoInvalidoException : DomainException
     {
@@ -16,7 +16,7 @@ namespace Capsap.Domain.Exceptions
 
         public DocumentoInvalidoException(string nombreArchivo, string razon)
             : base(
-                $"El documento '{nombreArchivo}' no es v√°lido. {razon}",
+                $"El documento '{nombreArchivo}' no es v·lido. {razon}",
                 "DOCUMENTO_INVALIDO")
         {
             NombreArchivo = nombreArchivo;

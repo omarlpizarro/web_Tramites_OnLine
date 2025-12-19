@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -52,7 +52,7 @@ namespace Infrastructure.Data.Configurations
                 .IsRequired(false)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Índices
+            // �ndices
             builder.HasIndex(s => s.NumeroSolicitud).IsUnique();
             builder.HasIndex(s => s.Estado);
             builder.HasIndex(s => s.AfiliadoSolicitanteId);

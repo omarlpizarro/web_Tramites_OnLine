@@ -8,22 +8,32 @@ using System.Threading.Tasks;
 namespace Application.Interfaces
 {
     public interface IAfiliadoRepository
-    {
+    {// Consultas básicas
         Task<Afiliado?> ObtenerPorIdAsync(int id);
         Task<Afiliado?> ObtenerPorMatriculaAsync(string matricula);
         Task<Afiliado?> ObtenerPorDNIAsync(string dni);
         Task<Afiliado?> ObtenerPorCUILAsync(string cuil);
         Task<Afiliado?> ObtenerPorEmailAsync(string email);
         Task<Afiliado?> ObtenerPorUsuarioIdAsync(int usuarioId);
+
+        // Búsquedas
         Task<List<Afiliado>> BuscarAsync(string criterio);
         Task<List<Afiliado>> ObtenerTodosAsync();
         Task<List<Afiliado>> ObtenerConDeudasAsync();
+
+        // Validaciones
         Task<bool> ExisteMatriculaAsync(string matricula, int? excluyendoId = null);
         Task<bool> ExisteDNIAsync(string dni, int? excluyendoId = null);
         Task<bool> ExisteCUILAsync(string cuil, int? excluyendoId = null);
+        //Task<bool> TieneDeudaAsync(int afiliadoId);
+
+
+        // Operaciones CRUD
         Task<Afiliado> AgregarAsync(Afiliado afiliado);
         Task ActualizarAsync(Afiliado afiliado);
         Task EliminarAsync(int id);
+
+        // Estadísticas
         Task<int> ContarActivosAsync();
         Task<int> ContarConDeudasAsync();
     }

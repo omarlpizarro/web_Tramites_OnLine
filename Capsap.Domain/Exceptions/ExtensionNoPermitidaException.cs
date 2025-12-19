@@ -1,4 +1,4 @@
-Ôªøusing System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Exceptions
 {
     /// <summary>
-    /// Excepci√≥n lanzada cuando la extensi√≥n del archivo no est√° permitida
+    /// ExcepciÛn lanzada cuando la extensiÛn del archivo no est· permitida
     /// </summary>
     public class ExtensionNoPermitidaException : DomainException
     {
@@ -17,7 +17,7 @@ namespace Capsap.Domain.Exceptions
 
         public ExtensionNoPermitidaException(string nombreArchivo, string extension, string[] extensionesPermitidas)
             : base(
-                $"La extensi√≥n '{extension}' del archivo '{nombreArchivo}' no est√° permitida. Extensiones permitidas: {string.Join(", ", extensionesPermitidas)}",
+                $"La extensiÛn '{extension}' del archivo '{nombreArchivo}' no est· permitida. Extensiones permitidas: {string.Join(", ", extensionesPermitidas)}",
                 "EXTENSION_NO_PERMITIDA")
         {
             NombreArchivo = nombreArchivo;

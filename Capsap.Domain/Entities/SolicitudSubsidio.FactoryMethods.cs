@@ -1,5 +1,6 @@
-Ôªøusing Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using Capsap.Domain.ValueObjects;
+using Capsap.Domain.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,24 +31,24 @@ namespace Capsap.Domain.Entities
             string tipoCuenta,
             string banco)
         {
-            // Validaci√≥n: Afiliado no debe tener deuda (Art. 73 Ley 4764/94)
+            // ValidaciÛn: Afiliado no debe tener deuda (Art. 73 Ley 4764/94)
             if (afiliadoSolicitante.TieneDeuda)
             {
                 return Result<SolicitudSubsidio>.Failure(
-                    "El afiliado tiene deuda pendiente. Debe regularizar su situaci√≥n antes de solicitar beneficios. (Art. 73 Ley 4764/94)"
+                    "El afiliado tiene deuda pendiente. Debe regularizar su situaciÛn antes de solicitar beneficios. (Art. 73 Ley 4764/94)"
                 );
             }
 
-            // Validaci√≥n: Afiliado debe estar activo
+            // ValidaciÛn: Afiliado debe estar activo
             if (!afiliadoSolicitante.Activo)
             {
-                return Result<SolicitudSubsidio>.Failure("El afiliado no est√° activo en el sistema");
+                return Result<SolicitudSubsidio>.Failure("El afiliado no est· activo en el sistema");
             }
 
-            // Validaci√≥n: CBU v√°lido
-            if (!CBU.EsValido(cbu))
+            // ValidaciÛn: CBU v·lido
+            if (!DomainValidators.EsCBUValido(cbu))
             {
-                return Result<SolicitudSubsidio>.Failure("El CBU proporcionado no es v√°lido");
+                return Result<SolicitudSubsidio>.Failure("El CBU proporcionado no es v·lido");
             }
 
             var solicitud = new SolicitudSubsidio
@@ -70,7 +71,7 @@ namespace Capsap.Domain.Entities
         }
 
         /// <summary>
-        /// M√©todo para enviar la solicitud (cambia de Borrador a Enviada)
+        /// MÈtodo para enviar la solicitud (cambia de Borrador a Enviada)
         /// </summary>
         public Result Enviar()
         {
@@ -92,13 +93,13 @@ namespace Capsap.Domain.Entities
         }
 
         /// <summary>
-        /// M√©todo para aprobar la solicitud
+        /// MÈtodo para aprobar la solicitud
         /// </summary>
         public Result Aprobar(Usuario usuario, string comentario = null)
         {
             if (Estado != EstadoSolicitud.EnRevision)
             {
-                return Result.Failure("Solo se pueden aprobar solicitudes en estado de revisi√≥n");
+                return Result.Failure("Solo se pueden aprobar solicitudes en estado de revisiÛn");
             }
 
             if (usuario.Rol != RolUsuario.EmpleadoRevisor && usuario.Rol != RolUsuario.Administrador)
@@ -115,7 +116,7 @@ namespace Capsap.Domain.Entities
         }
 
         /// <summary>
-        /// M√©todo para rechazar la solicitud
+        /// MÈtodo para rechazar la solicitud
         /// </summary>
         public Result Rechazar(Usuario usuario, string motivo)
         {

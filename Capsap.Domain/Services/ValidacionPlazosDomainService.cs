@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Constants;
+using Capsap.Domain.Constants;
 using Capsap.Domain.Enums;
 using Capsap.Domain.ValueObjects;
 using System;
@@ -47,7 +47,7 @@ namespace Capsap.Domain.Services
                 TipoSubsidio.Matrimonio => DomainConstants.PLAZO_MAXIMO_DIAS_MATRIMONIO,
                 TipoSubsidio.Maternidad => DomainConstants.PLAZO_MAXIMO_DIAS_MATERNIDAD,
                 TipoSubsidio.NacimientoAdopcion => DomainConstants.PLAZO_MAXIMO_DIAS_NACIMIENTO,
-                TipoSubsidio.HijoDiscapacitado => 365, // No tiene plazo estricto pero se usa para validación
+                TipoSubsidio.HijoDiscapacitado => 365, // No tiene plazo estricto pero se usa para validaci�n
                 _ => 180 // Default
             };
         }

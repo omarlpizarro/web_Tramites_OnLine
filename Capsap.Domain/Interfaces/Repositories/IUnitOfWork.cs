@@ -1,16 +1,17 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//using App
 
 namespace Capsap.Domain.Interfaces.Repositories
 {
     public interface IUnitOfWork : IDisposable
     {
-        IAfiliadoRepository Afiliados { get; }
-        ISolicitudSubsidioRepository Solicitudes { get; }
-        IDocumentoRepository Documentos { get; }
+        //IAfiliadoRepository Afiliados { get; }
+        //ISolicitudSubsidioRepository Solicitudes { get; }
+        //IDocumentoRepository Documentos { get; }
         IUsuarioRepository Usuarios { get; }
         IHistorialSolicitudRepository Historial { get; }
         IConfiguracionRepository Configuracion { get; }

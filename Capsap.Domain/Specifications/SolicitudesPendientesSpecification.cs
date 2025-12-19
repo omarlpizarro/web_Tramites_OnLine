@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Specifications
 {
     // ==========================================
-    // SPECIFICATIONS ESPECÍFICAS
+    // SPECIFICATIONS ESPEC�FICAS
     // ==========================================
 
     // Specification: Solicitudes pendientes

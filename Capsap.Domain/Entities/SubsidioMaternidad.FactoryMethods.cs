@@ -1,4 +1,4 @@
-ï»¿using Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using Capsap.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -27,23 +27,23 @@ namespace Capsap.Domain.Entities
             string ciudad,
             string provincia)
         {
-            // ValidaciÃ³n: Fecha del evento no puede ser futura
+            // Validación: Fecha del evento no puede ser futura
             if (fechaEvento > DateTime.Now)
             {
                 return Result<SubsidioMaternidad>.Failure("La fecha del evento no puede ser futura");
             }
 
-            // ValidaciÃ³n: Plazo de 180 dÃ­as corridos
+            // Validación: Plazo de 180 días corridos
             var diasTranscurridos = (DateTime.Now - fechaEvento).TotalDays;
             if (diasTranscurridos > PLAZO_MAXIMO_DIAS)
             {
                 return Result<SubsidioMaternidad>.Failure(
-                    $"Ha transcurrido el plazo de {PLAZO_MAXIMO_DIAS} dÃ­as corridos desde el {tipoEvento}. " +
-                    $"(DÃ­as transcurridos: {Math.Floor(diasTranscurridos)})"
+                    $"Ha transcurrido el plazo de {PLAZO_MAXIMO_DIAS} días corridos desde el {tipoEvento}. " +
+                    $"(Días transcurridos: {Math.Floor(diasTranscurridos)})"
                 );
             }
 
-            // ValidaciÃ³n: Nombre del hijo
+            // Validación: Nombre del hijo
             if (string.IsNullOrWhiteSpace(nombreHijo))
             {
                 return Result<SubsidioMaternidad>.Failure("Debe proporcionar el nombre del hijo/a");

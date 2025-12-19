@@ -1,4 +1,4 @@
-ï»¿using Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace Capsap.Domain.Exceptions
     // ==========================================
 
     /// <summary>
-    /// ExcepciÃ³n lanzada cuando se alcanza el lÃ­mite de solicitudes
+    /// Excepción lanzada cuando se alcanza el límite de solicitudes
     /// </summary>
     public class LimiteSolicitudesAlcanzadoException : DomainException
     {
@@ -23,7 +23,7 @@ namespace Capsap.Domain.Exceptions
 
         public LimiteSolicitudesAlcanzadoException(int afiliadoId, TipoSubsidio tipoSubsidio, int limiteAnual)
             : base(
-                $"Ha alcanzado el lÃ­mite de {limiteAnual} solicitud(es) de tipo {tipoSubsidio} por aÃ±o.",
+                $"Ha alcanzado el límite de {limiteAnual} solicitud(es) de tipo {tipoSubsidio} por año.",
                 "LIMITE_SOLICITUDES_ALCANZADO")
         {
             AfiliadoId = afiliadoId;

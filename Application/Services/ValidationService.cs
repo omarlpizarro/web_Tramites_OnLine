@@ -1,4 +1,5 @@
-ï»¿using Capsap.Domain.Constants;
+using Application.Interfaces;
+using Capsap.Domain.Constants;
 using Capsap.Domain.Enums;
 using Capsap.Domain.Interfaces.Repositories;
 using Capsap.Domain.Services;
@@ -36,7 +37,7 @@ namespace Application.Services
 
         public async Task<Result> VerificarDeudaAsync(int afiliadoId)
         {
-            var afiliado = await _afiliadoRepository.GetByIdAsync(afiliadoId);
+            var afiliado = await _afiliadoRepository.ObtenerPorIdAsync(afiliadoId);
             if (afiliado == null)
                 return Result.Failure("Afiliado no encontrado");
 
@@ -45,10 +46,9 @@ namespace Application.Services
                 return Result.Failure(DomainConstants.ErrorMessages.AFILIADO_CON_DEUDA);
             }
 
-            // Actualizar fecha de Ãºltima verificaciÃ³n
+            // Actualizar fecha de última verificación
             afiliado.FechaUltimaVerificacionDeuda = DateTime.Now;
-            await _afiliadoRepository.UpdateAsync(afiliado);
-            await _afiliadoRepository.SaveChangesAsync();
+            await _afiliadoRepository.ActualizarAsync(afiliado);
 
             return Result.Success();
         }
@@ -60,7 +60,7 @@ namespace Application.Services
 
         public async Task<Result> ValidarDocumentosRequeridosAsync(int solicitudId)
         {
-            var solicitud = await _solicitudRepository.GetByIdWithDetailsAsync(solicitudId);
+            var solicitud = await _solicitudRepository.ObtenerPorIdAsync(solicitudId);
             if (solicitud == null)
                 return Result.Failure("Solicitud no encontrada");
 

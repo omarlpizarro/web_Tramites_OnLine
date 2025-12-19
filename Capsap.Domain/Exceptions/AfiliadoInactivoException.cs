@@ -1,4 +1,4 @@
-Ôªøusing System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Exceptions
 {
     /// <summary>
-    /// Excepci√≥n lanzada cuando un afiliado no est√° activo
+    /// ExcepciÛn lanzada cuando un afiliado no est· activo
     /// </summary>
     public class AfiliadoInactivoException : DomainException
     {
@@ -16,7 +16,7 @@ namespace Capsap.Domain.Exceptions
 
         public AfiliadoInactivoException(int afiliadoId)
             : base(
-                "El afiliado no est√° activo en el sistema. No puede realizar solicitudes.",
+                "El afiliado no est· activo en el sistema. No puede realizar solicitudes.",
                 "AFILIADO_INACTIVO")
         {
             AfiliadoId = afiliadoId;
@@ -25,7 +25,7 @@ namespace Capsap.Domain.Exceptions
 
         public AfiliadoInactivoException(int afiliadoId, string matriculaProfesional)
             : base(
-                $"El afiliado con matr√≠cula {matriculaProfesional} no est√° activo en el sistema. No puede realizar solicitudes.",
+                $"El afiliado con matrÌcula {matriculaProfesional} no est· activo en el sistema. No puede realizar solicitudes.",
                 "AFILIADO_INACTIVO")
         {
             AfiliadoId = afiliadoId;

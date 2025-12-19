@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Exceptions
 {
     // ==========================================
-    // EXCEPCIONES DE DOCUMENTACIÃ“N
+    // EXCEPCIONES DE DOCUMENTACIÓN
     // ==========================================
 
     /// <summary>
-    /// ExcepciÃ³n lanzada cuando la documentaciÃ³n estÃ¡ incompleta
+    /// Excepción lanzada cuando la documentación está incompleta
     /// </summary>
     public class DocumentacionIncompletaException : DomainException
     {
@@ -20,7 +20,7 @@ namespace Capsap.Domain.Exceptions
 
         public DocumentacionIncompletaException(List<string> documentosFaltantes)
             : base(
-                $"DocumentaciÃ³n incompleta. Faltan los siguientes documentos: {string.Join(", ", documentosFaltantes)}",
+                $"Documentación incompleta. Faltan los siguientes documentos: {string.Join(", ", documentosFaltantes)}",
                 "DOCUMENTACION_INCOMPLETA")
         {
             DocumentosFaltantes = documentosFaltantes ?? new List<string>();
@@ -29,7 +29,7 @@ namespace Capsap.Domain.Exceptions
 
         public DocumentacionIncompletaException(int solicitudId, List<string> documentosFaltantes)
             : base(
-                $"La solicitud {solicitudId} tiene documentaciÃ³n incompleta. Faltan: {string.Join(", ", documentosFaltantes)}",
+                $"La solicitud {solicitudId} tiene documentación incompleta. Faltan: {string.Join(", ", documentosFaltantes)}",
                 "DOCUMENTACION_INCOMPLETA")
         {
             SolicitudId = solicitudId;

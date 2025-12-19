@@ -1,4 +1,4 @@
-Ôªøusing Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Services
 {
     // ==========================================
-    // SERVICIO DE C√ÅLCULO DE MONTOS (ejemplo para futura implementaci√≥n)
+    // SERVICIO DE C¡LCULO DE MONTOS (ejemplo para futura implementaciÛn)
     // ==========================================
     public interface ICalculadorMontoSubsidioDomainService
     {

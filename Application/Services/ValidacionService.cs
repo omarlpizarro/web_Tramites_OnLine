@@ -1,4 +1,5 @@
-Ôªøusing Capsap.Domain.Enums;
+using Application.Interfaces;
+using Capsap.Domain.Enums;
 using Capsap.Domain.Interfaces.Repositories;
 using Capsap.Domain.ValueObjects;
 using System;
@@ -27,25 +28,24 @@ namespace Application.Services
 
         public async Task<Result> VerificarDeudaAsync(int afiliadoId)
         {
-            var afiliado = await _afiliadoRepository.GetByIdAsync(afiliadoId);
+            var afiliado = await _afiliadoRepository.ObtenerPorIdAsync(afiliadoId);
             if (afiliado == null)
                 return Result.Failure("Afiliado no encontrado");
 
-            // Aqu√≠ se integrar√≠a con el sistema de deudas existente
+            // AquÌ se integrarÌa con el sistema de deudas existente
             // Por ahora, verificamos el campo TieneDeuda
             if (afiliado.TieneDeuda)
             {
                 return Result.Failure(
-                    "El afiliado tiene deuda pendiente con la instituci√≥n. " +
-                    "Debe regularizar su situaci√≥n antes de solicitar beneficios. " +
+                    "El afiliado tiene deuda pendiente con la instituciÛn. " +
+                    "Debe regularizar su situaciÛn antes de solicitar beneficios. " +
                     "(Art. 73 Ley 4764/94)"
                 );
             }
 
-            // Actualizar fecha de √∫ltima verificaci√≥n
+            // Actualizar fecha de ˙ltima verificaciÛn
             afiliado.FechaUltimaVerificacionDeuda = DateTime.Now;
-            await _afiliadoRepository.UpdateAsync(afiliado);
-            await _afiliadoRepository.SaveChangesAsync();
+            await _afiliadoRepository.ActualizarAsync(afiliado);
 
             return Result.Success();
         }
@@ -54,7 +54,7 @@ namespace Application.Services
         {
             int plazoMaximo;
 
-            // Obtener plazo desde configuraci√≥n
+            // Obtener plazo desde configuraciÛn
             switch (tipoSubsidio)
             {
                 case TipoSubsidio.Matrimonio:
@@ -76,9 +76,9 @@ namespace Application.Services
             if (diasTranscurridos > plazoMaximo)
             {
                 return Result.Failure(
-                    $"La solicitud est√° fuera de plazo. " +
-                    $"Han transcurrido {Math.Floor(diasTranscurridos)} d√≠as desde el evento. " +
-                    $"El plazo m√°ximo es de {plazoMaximo} d√≠as corridos."
+                    $"La solicitud est· fuera de plazo. " +
+                    $"Han transcurrido {Math.Floor(diasTranscurridos)} dÌas desde el evento. " +
+                    $"El plazo m·ximo es de {plazoMaximo} dÌas corridos."
                 );
             }
 
@@ -87,13 +87,13 @@ namespace Application.Services
 
         public async Task<Result> ValidarDocumentosRequeridosAsync(int solicitudId)
         {
-            var solicitud = await _solicitudRepository.GetByIdWithDetailsAsync(solicitudId);
+            var solicitud = await _solicitudRepository.ObtenerPorIdAsync(solicitudId);
             if (solicitud == null)
                 return Result.Failure("Solicitud no encontrada");
 
             var documentosFaltantes = new List<string>();
 
-            // Validar seg√∫n tipo de subsidio
+            // Validar seg˙n tipo de subsidio
             switch (solicitud.TipoSubsidio)
             {
                 case TipoSubsidio.Matrimonio:
@@ -126,7 +126,7 @@ namespace Application.Services
             if (documentosFaltantes.Any())
             {
                 return Result.Failure(
-                    $"Documentaci√≥n incompleta. Faltan: {string.Join(", ", documentosFaltantes)}"
+                    $"DocumentaciÛn incompleta. Faltan: {string.Join(", ", documentosFaltantes)}"
                 );
             }
 

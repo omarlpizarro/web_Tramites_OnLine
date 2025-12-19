@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +20,7 @@ namespace Capsap.Domain.Interfaces.Services
         Task<string> CopiarArchivoAsync(string rutaOrigen, string rutaDestino);
         Task<string> MoverArchivoAsync(string rutaOrigen, string rutaDestino);
 
-        // MÃ©todos especÃ­ficos para documentos
+        // Métodos específicos para documentos
         Task<string> GuardarDocumentoSolicitudAsync(int solicitudId, Stream archivo, string nombreArchivo);
         Task<byte[]> ObtenerDocumentoSolicitudAsync(int solicitudId, string nombreArchivo);
         Task LimpiarArchivosTemporalesAsync();

@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,11 +32,11 @@ namespace Capsap.Domain.Extensions
             if (diferencia.TotalHours < 24)
                 return $"Hace {(int)diferencia.TotalHours} hora(s)";
             if (diferencia.TotalDays < 30)
-                return $"Hace {(int)diferencia.TotalDays} dÃ­a(s)";
+                return $"Hace {(int)diferencia.TotalDays} día(s)";
             if (diferencia.TotalDays < 365)
                 return $"Hace {(int)(diferencia.TotalDays / 30)} mes(es)";
 
-            return $"Hace {(int)(diferencia.TotalDays / 365)} aÃ±o(s)";
+            return $"Hace {(int)(diferencia.TotalDays / 365)} año(s)";
         }
 
         public static bool EsFechaValida(this DateTime? fecha, DateTime? fechaMinima = null, DateTime? fechaMaxima = null)

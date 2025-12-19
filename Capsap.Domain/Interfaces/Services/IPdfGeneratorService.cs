@@ -1,4 +1,4 @@
-﻿using Capsap.Domain.Entities;
+using Capsap.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Interfaces.Services
 {
     // ==========================================
-    // SERVICIO DE GENERACIÓN DE PDF
+    // SERVICIO DE GENERACI�N DE PDF
     // ==========================================
     public interface IPdfGeneratorService
     {

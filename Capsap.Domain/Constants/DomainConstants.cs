@@ -1,4 +1,4 @@
-Ôªøusing System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +13,7 @@ namespace Capsap.Domain.Constants
         public const int PLAZO_MAXIMO_DIAS_MATERNIDAD = 180;
         public const int PLAZO_MAXIMO_DIAS_NACIMIENTO = 180;
 
-        // L√≠mites de archivos
+        // LÌmites de archivos
         public const long TAMANO_MAXIMO_ARCHIVO_BYTES = 10 * 1024 * 1024; // 10 MB
         public static readonly string[] EXTENSIONES_PERMITIDAS = { ".pdf", ".jpg", ".jpeg", ".png" };
         public static readonly string[] CONTENT_TYPES_PERMITIDOS = { "application/pdf", "image/jpeg", "image/png" };
@@ -29,17 +29,17 @@ namespace Capsap.Domain.Constants
         // Mensajes de error comunes
         public static class ErrorMessages
         {
-            public const string AFILIADO_CON_DEUDA = "El afiliado tiene deuda pendiente con la instituci√≥n. Debe regularizar su situaci√≥n antes de solicitar beneficios. (Art. 73 Ley 4764/94)";
-            public const string SOLICITUD_FUERA_DE_PLAZO = "La solicitud est√° fuera de plazo. El plazo m√°ximo es de {0} d√≠as corridos desde el evento.";
+            public const string AFILIADO_CON_DEUDA = "El afiliado tiene deuda pendiente con la instituciÛn. Debe regularizar su situaciÛn antes de solicitar beneficios. (Art. 73 Ley 4764/94)";
+            public const string SOLICITUD_FUERA_DE_PLAZO = "La solicitud est· fuera de plazo. El plazo m·ximo es de {0} dÌas corridos desde el evento.";
             public const string DOCUMENTO_REQUERIDO = "El documento {0} es requerido para este tipo de subsidio.";
-            public const string ARCHIVO_MUY_GRANDE = "El archivo excede el tama√±o m√°ximo permitido de {0} MB.";
-            public const string EXTENSION_NO_PERMITIDA = "La extensi√≥n del archivo no est√° permitida. Solo se aceptan: {0}.";
-            public const string CBU_INVALIDO = "El CBU proporcionado no es v√°lido.";
-            public const string DNI_INVALIDO = "El DNI proporcionado no es v√°lido.";
-            public const string CUIL_INVALIDO = "El CUIL proporcionado no es v√°lido.";
+            public const string ARCHIVO_MUY_GRANDE = "El archivo excede el tamaÒo m·ximo permitido de {0} MB.";
+            public const string EXTENSION_NO_PERMITIDA = "La extensiÛn del archivo no est· permitida. Solo se aceptan: {0}.";
+            public const string CBU_INVALIDO = "El CBU proporcionado no es v·lido.";
+            public const string DNI_INVALIDO = "El DNI proporcionado no es v·lido.";
+            public const string CUIL_INVALIDO = "El CUIL proporcionado no es v·lido.";
         }
 
-        // Configuraci√≥n de emails
+        // ConfiguraciÛn de emails
         public static class EmailTemplates
         {
             public const string SOLICITUD_CREADA = "SolicitudCreada";

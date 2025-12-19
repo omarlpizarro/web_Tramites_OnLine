@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Exceptions
 {
     /// <summary>
-    /// ExcepciÃ³n lanzada cuando no se encuentra un afiliado
+    /// Excepción lanzada cuando no se encuentra un afiliado
     /// </summary>
     public class AfiliadoNoEncontradoException : DomainException
     {
@@ -16,7 +16,7 @@ namespace Capsap.Domain.Exceptions
 
         public AfiliadoNoEncontradoException(int afiliadoId)
             : base(
-                $"No se encontrÃ³ el afiliado con ID {afiliadoId}.",
+                $"No se encontró el afiliado con ID {afiliadoId}.",
                 "AFILIADO_NO_ENCONTRADO")
         {
             AfiliadoId = afiliadoId;
@@ -25,7 +25,7 @@ namespace Capsap.Domain.Exceptions
 
         public AfiliadoNoEncontradoException(string criterio)
             : base(
-                $"No se encontrÃ³ el afiliado con el criterio: {criterio}.",
+                $"No se encontró el afiliado con el criterio: {criterio}.",
                 "AFILIADO_NO_ENCONTRADO")
         {
             Criterio = criterio;

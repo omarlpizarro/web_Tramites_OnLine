@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Capsap.Domain.Helpers
 {
     /// <summary>
-    /// Helper para operaciones con contraseñas
+    /// Helper para operaciones con contrase�as
     /// </summary>
     public static class PasswordHelper
     {

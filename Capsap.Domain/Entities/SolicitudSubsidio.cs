@@ -1,4 +1,4 @@
-Ôªøusing Capsap.Domain.Enums;
+using Capsap.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace Capsap.Domain.Entities
     // ==========================================
     public partial class SolicitudSubsidio : EntityBase
     {
-        public string NumeroSolicitud { get; set; } // Generado autom√°ticamente
+        public string NumeroSolicitud { get; set; } // Generado autom·ticamente
         public int AfiliadoSolicitanteId { get; set; }
         public int? AfiliadoConyuge2Id { get; set; } // Si ambos son afiliados
         public TipoSubsidio TipoSubsidio { get; set; }
@@ -36,7 +36,7 @@ namespace Capsap.Domain.Entities
         public virtual ICollection<DocumentoAdjunto> Documentos { get; set; }
         public virtual ICollection<HistorialSolicitud> Historial { get; set; }
 
-        // Navegaci√≥n espec√≠fica por tipo de subsidio
+        // NavegaciÛn especÌfica por tipo de subsidio
         public virtual SubsidioMatrimonio SubsidioMatrimonio { get; set; }
         public virtual SubsidioMaternidad SubsidioMaternidad { get; set; }
         public virtual SubsidioNacimientoAdopcion SubsidioNacimientoAdopcion { get; set; }

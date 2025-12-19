@@ -1,6 +1,8 @@
-﻿using Capsap.Domain.Entities;
+﻿using Application.Interfaces;
+using Capsap.Domain.Entities;
 using Capsap.Domain.Enums;
-using Capsap.Domain.Interfaces.Repositories;
+using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +13,9 @@ namespace Infrastructure.Repositories
 {
     public class DocumentoRepository : IDocumentoRepository
     {
-        private readonly ApplicationDbContext _context;
+        private readonly CapsapDbContext _context;
 
-        public DocumentoRepository(ApplicationDbContext context)
+        public DocumentoRepository(CapsapDbContext context)
         {
             _context = context;
         }
@@ -160,7 +162,7 @@ namespace Infrastructure.Repositories
             },
                 TipoSubsidio.Maternidad => new List<TipoDocumento>
             {
-                TipoDocumento.CertificadoMedico,
+                //TipoDocumento.CertificadoMedico,
                 TipoDocumento.DNISolicitante
             },
                 TipoSubsidio.NacimientoAdopcion => new List<TipoDocumento>
@@ -171,8 +173,8 @@ namespace Infrastructure.Repositories
                 TipoSubsidio.HijoDiscapacitado => new List<TipoDocumento>
             {
                 TipoDocumento.CertificadoDiscapacidad,
-                TipoDocumento.DNISolicitante,
-                TipoDocumento.DNIBeneficiario
+                TipoDocumento.DNISolicitante
+                //TipoDocumento.DNIBeneficiario
             },
                 _ => new List<TipoDocumento> { TipoDocumento.DNISolicitante }
             };
