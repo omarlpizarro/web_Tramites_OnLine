@@ -1,54 +1,49 @@
-﻿using Capsap.Domain.Interfaces.Repositories;
-using Capsap.Domain.Interfaces.Services;
-using Infrastructure.Identity;
-using Infrastructure.Repositories;
-using Infrastructure.Services;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Infrastructure.Data;                // Para CapsapDbContext
+using Infrastructure.Identity;            // Para IdentityConfiguration
+using Infrastructure.Repositories;        // Para los repositorios
+using Infrastructure.Services;
+using Application.Interfaces.Services;
+using Application.Interfaces;            // Para los servicios
 
-namespace Infrastructure
+namespace Capsap.Infrastructure;
+public static class DependencyInjection
 {
-    public static class DependencyInjection
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
-        {
-            // DbContext
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    configuration.GetConnectionString("DefaultConnection"),
-                    b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+        // DbContext
+        services.AddDbContext<CapsapDbContext>(options =>
+        options.UseSqlServer(
+        configuration.GetConnectionString("DefaultConnection"),
+                b => b.MigrationsAssembly(typeof(CapsapDbContext).Assembly.FullName)));
 
-            // Identity
-            services.AddIdentityConfiguration();
+        // Identity
+        services.AddIdentityConfiguration();
 
-            // Repositorios
-            services.AddScoped<IAfiliadoRepository, AfiliadoRepository>();
-            services.AddScoped<ISolicitudSubsidioRepository, SolicitudSubsidioRepository>();
-            services.AddScoped<IDocumentoRepository, DocumentoRepository>();
+        // Repositorios
+        services.AddScoped<IAfiliadoRepository, AfiliadoRepository>();
+        //services.AddScoped<ISolicitudSubsidioRepository, SolicitudSubsidioRepository>();
+        services.AddScoped<IDocumentoRepository, DocumentoRepository>();
 
-            // Servicios
-            services.AddScoped<IEmailService, EmailService>();
-            services.AddScoped<IFileStorageService, FileStorageService>();
-            services.AddScoped<IPdfGeneratorService, PdfGeneratorService>();
+        // Servicios
+        services.AddScoped<IEmailService, EmailService>();
+        //services.AddScoped<IFileStorageService, FileStorageService>();
+        services.AddScoped<IPdfGeneratorService, PdfGeneratorService>();
 
-            return services;
-        }
+        return services;
+    }
 
-        public static async Task InitializeDatabaseAsync(IServiceProvider serviceProvider)
-        {
-            using var scope = serviceProvider.CreateScope();
-            var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    public static async Task InitializeDatabaseAsync(IServiceProvider serviceProvider)
+    {
+        using var scope = serviceProvider.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<CapsapDbContext>();
 
-            // Aplicar migraciones pendientes
-            await context.Database.MigrateAsync();
+        // Aplicar migraciones pendientes
+        await context.Database.MigrateAsync();
 
-            // Seed de roles y usuario admin
-            await IdentityConfiguration.SeedRolesAndAdminAsync(serviceProvider);
-        }
+        // Seed de roles y usuario admin
+        await IdentityConfiguration.SeedRolesAndAdminAsync(serviceProvider);
     }
 }

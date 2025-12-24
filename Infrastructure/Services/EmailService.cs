@@ -1,5 +1,5 @@
 ﻿using Capsap.Domain.Enums;
-using Capsap.Domain.Interfaces.Services;
+using Application.Interfaces.Services;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -85,7 +85,7 @@ namespace Infrastructure.Services
             {
                 EstadoSolicitud.Aprobada => "APROBADA",
                 EstadoSolicitud.Rechazada => "RECHAZADA",
-                EstadoSolicitud.PendienteRevision => "EN REVISIÓN",
+                EstadoSolicitud.EnRevision => "EN REVISIÓN",
                 EstadoSolicitud.DocumentacionIncompleta => "REQUIERE DOCUMENTACIÓN ADICIONAL",
                 EstadoSolicitud.Pagada => "PAGADA",
                 _ => nuevoEstado.ToString()

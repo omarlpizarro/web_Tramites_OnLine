@@ -7,13 +7,14 @@ using Capsap.Domain.Enums;
 using Capsap.Domain.Extensions;
 using Capsap.Domain.Interfaces.Repositories;
 using Capsap.Domain.Interfaces.Services;
-using Capsap.Domain.Services;
+using Application.Interfaces.Services;
 using Capsap.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Capsap.Domain.Services;
 
 namespace Application.Services
 {
@@ -132,7 +133,11 @@ namespace Application.Services
                 await _unitOfWork.CommitTransactionAsync();
 
                 // 9. Enviar email de confirmación
-                await _emailService.EnviarEmailSolicitudCreadaAsync(solicitud);
+                await _emailService.EnviarConfirmacionSolicitudAsync(
+                solicitud.AfiliadoSolicitante.Email,
+                solicitud.NumeroSolicitud,
+                $"{solicitud.AfiliadoSolicitante.Apellido}, {solicitud.AfiliadoSolicitante.Nombre}"
+);
 
                 // 10. Mapear a DTO de respuesta
                 var response = MapearASolicitudResponseDto(solicitud);
@@ -211,7 +216,11 @@ namespace Application.Services
                 await _unitOfWork.SaveChangesAsync();
                 await _unitOfWork.CommitTransactionAsync();
 
-                await _emailService.EnviarEmailSolicitudCreadaAsync(solicitud);
+                await _emailService.EnviarConfirmacionSolicitudAsync(
+                solicitud.AfiliadoSolicitante.Email,
+                solicitud.NumeroSolicitud,
+                $"{solicitud.AfiliadoSolicitante.Apellido}, {solicitud.AfiliadoSolicitante.Nombre}"
+);
 
                 var response = MapearASolicitudResponseDto(solicitud);
                 return Result<SolicitudResponseDto>.Success(response);
@@ -301,7 +310,7 @@ namespace Application.Services
                 await _unitOfWork.SaveChangesAsync();
                 await _unitOfWork.CommitTransactionAsync();
 
-                await _emailService.EnviarEmailSolicitudCreadaAsync(solicitud);
+                await _emailService.EnviarConfirmacionSolicitudAsync(solicitud.AfiliadoSolicitante.Email, solicitud.NumeroSolicitud, $"{solicitud.AfiliadoSolicitante.Apellido}, {solicitud.AfiliadoSolicitante.Nombre}");
 
                 var response = MapearASolicitudResponseDto(solicitud);
                 return Result<SolicitudResponseDto>.Success(response);
@@ -375,7 +384,7 @@ namespace Application.Services
                 await _unitOfWork.SaveChangesAsync();
                 await _unitOfWork.CommitTransactionAsync();
 
-                await _emailService.EnviarEmailSolicitudCreadaAsync(solicitud);
+                await _emailService.EnviarConfirmacionSolicitudAsync(solicitud.AfiliadoSolicitante.Email, solicitud.NumeroSolicitud, $"{solicitud.AfiliadoSolicitante.Apellido}, {solicitud.AfiliadoSolicitante.Nombre}");
 
                 var response = MapearASolicitudResponseDto(solicitud);
                 return Result<SolicitudResponseDto>.Success(response);
@@ -447,8 +456,8 @@ namespace Application.Services
                 await _unitOfWork.CommitTransactionAsync();
 
                 // Notificar a empleados
-                await _emailService.EnviarEmailNuevaSolicitudAEmpleadosAsync(solicitud);
-                await _emailService.EnviarEmailSolicitudEnviadaAsync(solicitud);
+                //await _emailService.EnviarEmailNuevaSolicitudAEmpleadosAsync(solicitud);
+                await _emailService.EnviarConfirmacionSolicitudAsync(solicitud.AfiliadoSolicitante.Email, solicitud.NumeroSolicitud, $"{solicitud.AfiliadoSolicitante.Apellido}, {solicitud.AfiliadoSolicitante.Nombre}");
 
                 return Result.Success();
             }
@@ -499,8 +508,8 @@ namespace Application.Services
                 await _unitOfWork.CommitTransactionAsync();
 
                 // Notificar al afiliado
-                await _emailService.EnviarEmailSolicitudAprobadaAsync(solicitud);
-
+                //await _emailService.EnviarEmailSolicitudAprobadaAsync(solicitud);
+                await _emailService.EnviarNotificacionAprobacionAsync(solicitud.AfiliadoSolicitante.Email,solicitud.NumeroSolicitud, 0);
                 return Result.Success();
             }
             catch (Exception ex)
@@ -544,7 +553,7 @@ namespace Application.Services
                 await _unitOfWork.CommitTransactionAsync();
 
                 // Notificar al afiliado
-                await _emailService.EnviarEmailSolicitudRechazadaAsync(solicitud, motivo);
+                await _emailService.EnviarNotificacionRechazoAsync(solicitud.AfiliadoSolicitante.Email, solicitud.NumeroSolicitud, motivo);
 
                 return Result.Success();
             }
@@ -588,7 +597,7 @@ namespace Application.Services
                 await _unitOfWork.CommitTransactionAsync();
 
                 // Notificar al afiliado
-                await _emailService.EnviarEmailDocumentacionIncompletaAsync(solicitud, documentosFaltantes);
+                await _emailService.EnviarSolicitudDocumentacionAsync(solicitud.AfiliadoSolicitante.Email,solicitud.NumeroSolicitud, documentosFaltantes);
 
                 return Result.Success();
             }

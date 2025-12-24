@@ -24,5 +24,10 @@ namespace Application.Interfaces.Services
         bool ValidarTipoMime(string contentType);
         Task LimpiarArchivosTemporalesAsync(int diasAntiguedad = 30);
         Task<Dictionary<string, long>> ObtenerEstadisticasAlmacenamientoAsync();
+        // Métodos específicos para documentos
+        Task<string> GuardarDocumentoSolicitudAsync(int solicitudId, Stream archivo, string nombreArchivo);
+        Task<byte[]> ObtenerDocumentoSolicitudAsync(int solicitudId, string nombreArchivo);
+        Task LimpiarArchivosTemporalesAsync();
+
     }
 }

@@ -121,8 +121,12 @@ namespace Application.Services
         {
             try
             {
-                var tieneDeuda = await _afiliadoRepository.TieneDeudaAsync(afiliadoId);
-                return Result<bool>.Success(tieneDeuda);
+                var afiliado = await _afiliadoRepository.ObtenerPorIdAsync(afiliadoId);
+
+                if (afiliado == null)
+                    return Result<bool>.Failure("Afiliado no encontrado");
+
+                return Result<bool>.Success(afiliado.TieneDeuda);
             }
             catch (Exception ex)
             {

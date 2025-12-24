@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Infrastructure.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +37,7 @@ namespace Infrastructure.Identity
                 options.SignIn.RequireConfirmedEmail = false; // Cambiar a true si se implementa confirmación por email
                 options.SignIn.RequireConfirmedPhoneNumber = false;
             })
-            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddEntityFrameworkStores<CapsapDbContext>()
             .AddDefaultTokenProviders();
 
             // Configuración de cookies

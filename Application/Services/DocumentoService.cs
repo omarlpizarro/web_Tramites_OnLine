@@ -5,7 +5,7 @@ using Capsap.Domain.Entities;
 using Capsap.Domain.Enums;
 using Capsap.Domain.Extensions;
 using Capsap.Domain.Interfaces.Repositories;
-using Capsap.Domain.Interfaces.Services;
+using Application.Interfaces.Services;
 using Capsap.Domain.ValueObjects;
 using Microsoft.AspNetCore.Http;
 using System;

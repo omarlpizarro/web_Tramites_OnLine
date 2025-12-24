@@ -1,6 +1,6 @@
 ﻿using Capsap.Domain.Entities;
 using Capsap.Domain.Enums;
-using Capsap.Domain.Interfaces.Services;
+using Application.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -375,7 +375,7 @@ namespace Infrastructure.Services
         <p><strong>Total de solicitudes:</strong> {solicitudes.Count}</p>
         <p><strong>Aprobadas:</strong> {solicitudes.Count(s => s.Estado == EstadoSolicitud.Aprobada)}</p>
         <p><strong>Rechazadas:</strong> {solicitudes.Count(s => s.Estado == EstadoSolicitud.Rechazada)}</p>
-        <p><strong>Pendientes:</strong> {solicitudes.Count(s => s.Estado == EstadoSolicitud.PendienteRevision)}</p>
+        <p><strong>Pendientes:</strong> {solicitudes.Count(s => s.Estado == EstadoSolicitud.EnRevision)}</p>
     </div>
 </body>
 </html>";
